@@ -71,10 +71,15 @@ export default function HousesSection() {
           <motion.div
             key={activeIndex}
             custom={direction}
-            initial={(dir: number) => ({ opacity: 0, x: dir * 48 })}
-            animate={{ opacity: 1, x: 0 }}
-            exit={(dir: number) => ({ opacity: 0, x: dir * -48 })}
-            transition={{ duration: 0.42, ease: [0.22, 0.61, 0.36, 1] }}
+            variants={{
+              enter: (dir: number) => ({ opacity: 0, x: dir * 48 }),
+              center: { opacity: 1, x: 0 },
+              exit: (dir: number) => ({ opacity: 0, x: dir * -48 }),
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.42, ease: [0.22, 0.61, 0.36, 1] as [number, number, number, number] }}
             className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-16 items-center"
           >
             {/* Image */}

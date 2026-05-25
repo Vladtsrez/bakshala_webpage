@@ -2,9 +2,11 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import SectionBadge from '../components/ui/SectionBadge'
 
+const EASE = [0.22, 0.61, 0.36, 1] as [number, number, number, number]
+
 const item = (delay: number) => ({
   initial: { opacity: 0, y: 22 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay, ease: [0.22, 0.61, 0.36, 1] } },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay, ease: EASE } },
 })
 
 export default function HeroSection() {
