@@ -17,7 +17,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         />
         <div>
           <div className="text-[14px] font-medium text-white">{t.name}</div>
-          <div className="text-[12px] text-bakshala-mist mt-0.5">{t.role}</div>
+          <div className="text-[12px] text-white mt-0.5">{t.role}</div>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@ export default function Testimonials() {
         </div>
 
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-white"
           style={{
             maxHeight: '740px',
             overflow: 'hidden',

@@ -53,9 +53,9 @@ export default function Header() {
           style={{ padding: scrolled ? '14px 32px' : '22px 32px' }}>
           <Link
             to="/"
-            className="font-serif font-light text-[18px] tracking-[0.32em] uppercase text-bakshala-text"
+            className="font-serif font-light text-[18px] tracking-[0.32em] uppercase text-[#ffffff]"
           >
-            Ранчо&nbsp;<span className="text-bakshala-sand">Бакшала</span>
+            Ранчо&nbsp;<span className="text-white">Бакшала</span>
           </Link>
 
           {/* Desktop nav */}

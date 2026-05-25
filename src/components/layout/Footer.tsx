@@ -32,10 +32,10 @@ export default function Footer() {
             <div className="font-serif font-light text-[18px] tracking-[0.32em] uppercase text-white">
               Ранчо <span className="text-bakshala-sand">Бакшала</span>
             </div>
-            <p className="mt-5 font-serif text-[22px] font-light leading-[1.35] text-white/86 max-w-xs">
+            <p className="mt-5 font-serif text-[22px] font-light leading-[1.35] text-white max-w-xs">
               Відпочинок на березі озера в&nbsp;серці природи.
             </p>
-            <div className="flex gap-3 mt-7">
+            <div className="flex gap-3 mt-7 text-white ">
               {([
                 { el: <IcoInstagram />, label: 'Instagram' },
                 { el: <IcoFacebook />, label: 'Facebook' },
@@ -82,7 +82,7 @@ export default function Footer() {
           {/* Contacts */}
           <div>
             <h5 className="font-serif font-normal text-xl text-white mb-5">Контакти</h5>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-4 text-white">
               <li className="flex gap-3.5 text-[14px] text-white/72 leading-relaxed">
                 <Phone size={16} className="text-bakshala-sand flex-shrink-0 mt-0.5" />
                 <span>
@@ -102,9 +102,9 @@ export default function Footer() {
               <li className="flex gap-3.5 text-[14px] text-white/72 leading-relaxed">
                 <MapPin size={16} className="text-bakshala-sand flex-shrink-0 mt-0.5" />
                 <span>
-                  Україна, Вінницька обл.
+                  Україна, Миколаївська обл.
                   <br />
-                  <span className="text-white/50">с. Бакшала</span>
+                  <span className="text-white/50">с. Прибужжя</span>
                 </span>
               </li>
             </ul>
