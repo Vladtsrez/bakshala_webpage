@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import {
-  Users, Phone, Send, MessageCircle, AlertTriangle, Check, X, Ban,
+  Users, Phone, Send, MessageCircle, AlertTriangle, X, Ban,
   Percent, Zap, PawPrint, Clock, Shield, Key, Flame, Volume2,
   Siren, Cctv, TreePine, BedDouble, Star,
 } from 'lucide-react'
