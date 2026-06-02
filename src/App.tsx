@@ -10,6 +10,7 @@ import Houses from './pages/Houses'
 import HouseDetail from './pages/HouseDetail'
 import Fishing from './pages/Fishing'
 import Leisure from './pages/Leisure'
+import Pier from './pages/Pier'
 import Lake from './pages/Lake'
 import Contacts from './pages/Contacts'
 
@@ -29,6 +30,7 @@ export default function App() {
             <Route path="/houses/:id" element={<HouseDetail />} />
             <Route path="/fishing" element={<Fishing />} />
             <Route path="/leisure" element={<Leisure />} />
+            <Route path="/pier" element={<Pier />} />
             <Route path="/lake" element={<Lake />} />
             <Route path="/contacts" element={<Contacts />} />
           </Routes>

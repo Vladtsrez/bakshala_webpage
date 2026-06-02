@@ -9,7 +9,8 @@ const NAV_LINKS = [
   { label: 'Будиночки', to: '/houses' },
   { label: 'Рибалка', to: '/fishing' },
   { label: 'Озеро', to: '/lake' },
-  { label: 'Беседки', to: '/leisure' },
+  { label: 'Альтанки', to: '/leisure' },
+  { label: 'Окремий пірс', to: '/pier' },
   { label: 'Контакти', to: '/contacts' },
 ]
 
