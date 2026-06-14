@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { Users, ArrowLeft, Wifi, Bath, Coffee, Flame, Car, Waves, ArrowRight } from 'lucide-react'
+import { Users, ArrowLeft, Wifi, Bath, Coffee, Flame, Car, Waves, ArrowRight, Tv, Wind } from 'lucide-react'
 import { useState } from 'react'
 import { houses } from '../data/houses'
 import PageTransition from '../components/shared/PageTransition'
@@ -8,7 +8,7 @@ import SectionBadge from '../components/ui/SectionBadge'
 const ICONS: Record<string, React.FC<{ size?: number; className?: string }>> = {
   WiFi: Wifi, Душ: Bath, Ванна: Bath, Кухня: Coffee, Мангал: Flame,
   Паркінг: Car, Тераса: Waves, 'Дитяче місце': Users, Джакузі: Bath,
-  Камін: Flame, Причал: Waves,
+  Камін: Flame, Причал: Waves, Телевізор: Tv, Кондиціонер: Wind,
 }
 
 export default function HouseDetail() {

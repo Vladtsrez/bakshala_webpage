@@ -99,8 +99,8 @@ export default function AboutSection() {
 
           <div className="aspect-[2/3] overflow-hidden hidden lg:block">
             <img
-              src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&h=900&fit=crop"
-              alt="Природа Бакшали"
+              src={`${import.meta.env.BASE_URL}Озеро.JPG`}
+              alt="Ранчо Бакшала — пірс на озері"
               loading="lazy"
               className="w-full h-full object-cover"
             />

@@ -19,13 +19,13 @@ export default function HeroSection() {
           alt="Ранчо Бакшала — вид на озеро"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/42 via-black/28 to-black/60" />
+        <div className="absolute inset-0 bg-black/55" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-[980px] mx-auto">
         <motion.div {...item(0)}>
-          <SectionBadge light>Природа · Відпочинок · Рибалка</SectionBadge>
+          <SectionBadge light>Панорамні будинки · Альтанки · Рибалка · Еко відпочинок</SectionBadge>
         </motion.div>
 
         <motion.h1
@@ -33,11 +33,10 @@ export default function HeroSection() {
           className="font-serif font-light mt-5 mb-6 leading-[1.02] tracking-[-0.02em]"
           style={{ fontSize: 'clamp(44px, 7.2vw, 104px)' }}
         >
-          Ваш відпочинок
+          Відпочинок 
           <br />
-          серед <em className="text-[#c0a574] not-italic">природи</em>
+          <em className="text-bakshala-mist not-italic">біля водойми</em>
           <br />
-          на берегах озера
         </motion.h1>
 
         <motion.p
@@ -54,7 +53,7 @@ export default function HeroSection() {
         >
           <Link
             to="/houses"
-            className="inline-flex items-center gap-2.5 bg-bakshala-sand text-white border border-bakshala-sand px-7 py-3.5 text-[12px] tracking-[0.18em] uppercase rounded-full hover:bg-bakshala-sand/90 transition-colors backdrop-blur-sm"
+            className="inline-flex items-center gap-2.5 bg-bakshala-lake text-white border border-bakshala-lake px-7 py-3.5 text-[12px] tracking-[0.18em] uppercase rounded-full hover:bg-bakshala-lake/90 transition-colors backdrop-blur-sm"
           >
             Переглянути будиночки
           </Link>

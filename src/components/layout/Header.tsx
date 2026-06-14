@@ -44,19 +44,19 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-white/85 border-b border-bakshala-mist'
-            : 'bg-bakshala-shore/72 border-b border-transparent'
+            ? 'bg-white/90 backdrop-blur-md border-b border-bakshala-mist'
+            : 'bg-gradient-to-b from-black/50 to-transparent border-b border-transparent'
         }`}
       >
         <div className="max-w-[1280px] mx-auto px-8 flex items-center justify-between transition-all duration-300"
           style={{ padding: scrolled ? '14px 32px' : '22px 32px' }}>
           <Link
             to="/"
-            className="font-serif font-light text-[18px] tracking-[0.32em] uppercase text-[#ffffff]"
+            className={`font-serif font-light text-[18px] tracking-[0.32em] uppercase ${scrolled ? 'text-bakshala-text' : 'text-white'}`}
           >
-            Ранчо&nbsp;<span className="text-white">Бакшала</span>
+            Ранчо&nbsp;Бакшала
           </Link>
 
           {/* Desktop nav */}
@@ -67,10 +67,10 @@ export default function Header() {
                   key={link.label}
                   href="#about-section"
                   onClick={handleAboutClick}
-                  className="text-[13px] text-bakshala-text/80 hover:text-bakshala-text transition-colors relative group py-1"
+                  className={`text-[13px] transition-colors relative group py-1 ${scrolled ? 'text-bakshala-text/80 hover:text-bakshala-text' : 'text-white/85 hover:text-white'}`}
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 right-0 h-px bg-bakshala-sand scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                  <span className="absolute bottom-0 left-0 right-0 h-px bg-bakshala-lake scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                 </a>
               ) : (
                 <NavLink
@@ -79,13 +79,13 @@ export default function Header() {
                   className={({ isActive }) =>
                     `text-[13px] transition-colors relative group py-1 ${
                       isActive
-                        ? 'text-bakshala-lake'
-                        : 'text-bakshala-text/80 hover:text-bakshala-text'
+                        ? scrolled ? 'text-bakshala-lake' : 'text-white'
+                        : scrolled ? 'text-bakshala-text/80 hover:text-bakshala-text' : 'text-white/85 hover:text-white'
                     }`
                   }
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 right-0 h-px bg-bakshala-sand scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                  <span className="absolute bottom-0 left-0 right-0 h-px bg-bakshala-lake scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                 </NavLink>
               )
             )}
@@ -94,13 +94,13 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <Link
               to="/contacts"
-              className="hidden md:block border border-bakshala-text text-[12px] tracking-[0.14em] uppercase px-[22px] py-[11px] rounded-full hover:bg-bakshala-lake hover:border-bakshala-lake hover:text-white transition-all duration-200"
+              className={`hidden md:block border text-[12px] tracking-[0.14em] uppercase px-[22px] py-[11px] rounded-full hover:bg-bakshala-lake hover:border-bakshala-lake hover:text-white transition-all duration-200 ${scrolled ? 'border-bakshala-text text-bakshala-text' : 'border-white/80 text-white'}`}
             >
               Забронювати
             </Link>
             <button
               onClick={() => setDrawerOpen(true)}
-              className="md:hidden w-11 h-11 flex items-center justify-center"
+              className={`md:hidden w-11 h-11 flex items-center justify-center ${scrolled ? '' : 'text-white'}`}
               aria-label="Меню"
             >
               <Menu size={22} />
@@ -121,7 +121,7 @@ export default function Header() {
           >
             <div className="flex justify-between items-center mb-[60px]">
               <span className="font-serif font-light text-[18px] tracking-[0.32em] uppercase">
-                Ранчо <span className="text-bakshala-sand">Бакшала</span>
+                Ранчо <span className="text-bakshala-lake">Бакшала</span>
               </span>
               <button
                 onClick={() => setDrawerOpen(false)}
