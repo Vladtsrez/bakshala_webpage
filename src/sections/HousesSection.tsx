@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Users, Wifi, Bath, Coffee, Flame, Car, Waves } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { houses } from '../data/houses'
 import { openBooking } from '../lib/openBooking'
 import SectionBadge from '../components/ui/SectionBadge'
