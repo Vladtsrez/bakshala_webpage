@@ -58,24 +58,22 @@ export default function HouseDetail() {
       </div>
 
       {/* ── Gallery ── */}
-      <section className="bg-[#111] py-8 px-8">
-        <div className="max-w-[1280px] mx-auto">
-          <div className="columns-2 md:columns-3 gap-3">
-            {allImages.map((src, i) => (
-              <div
-                key={i}
-                className="break-inside-avoid mb-3 overflow-hidden cursor-zoom-in group"
-                onClick={() => openLightbox(i)}
-              >
-                <img
-                  src={src}
-                  alt={`${house.name} — фото ${i + 1}`}
-                  loading={i < 3 ? 'eager' : 'lazy'}
-                  className="w-full h-auto block group-hover:opacity-90 transition-opacity duration-300"
-                />
-              </div>
-            ))}
-          </div>
+      <section className="bg-[#111] p-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {allImages.map((src, i) => (
+            <div
+              key={i}
+              className="aspect-[4/3] overflow-hidden cursor-zoom-in group"
+              onClick={() => openLightbox(i)}
+            >
+              <img
+                src={src}
+                alt={`${house.name} — фото ${i + 1}`}
+                loading={i < 3 ? 'eager' : 'lazy'}
+                className="w-full h-full object-cover group-hover:opacity-85 transition-opacity duration-300"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
