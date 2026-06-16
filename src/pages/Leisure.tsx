@@ -211,7 +211,7 @@ export default function Leisure() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[11px] tracking-[0.28em] uppercase text-bakshala-sand mb-4 mt-2"
+            className="text-[11px] tracking-[0.28em] uppercase text-white/70 mb-4 mt-2"
           >
             Денний відпочинок · компанія · затишок
           </motion.div>
@@ -223,7 +223,7 @@ export default function Leisure() {
             className="font-serif font-light text-[clamp(44px,6vw,84px)] leading-tight tracking-tight"
           >
             Альтанки для<br />
-            <em className="italic text-bakshala-sand/90">вашого дня</em>
+            <em className="italic text-white">вашого дня</em>
           </motion.h1>
 
           <motion.p
@@ -524,11 +524,11 @@ export default function Leisure() {
                 </div>
                 <div className="flex items-baseline justify-between py-3.5 border-t border-white/10">
                   <span className="text-[14px] text-white/65 tracking-[0.03em]">Заїзд з</span>
-                  <span className="font-serif font-light text-[38px] leading-none text-white">12:00</span>
+                  <span className="font-serif font-light text-[38px] leading-none text-white">10:00</span>
                 </div>
                 <div className="flex items-baseline justify-between py-3.5 border-t border-white/10">
                   <span className="text-[14px] text-white/65 tracking-[0.03em]">Виїзд до</span>
-                  <span className="font-serif font-light text-[38px] leading-none text-white">23:00</span>
+                  <span className="font-serif font-light text-[38px] leading-none text-white">22:00</span>
                 </div>
               </div>
               <div className="border border-white/[0.14] p-9">

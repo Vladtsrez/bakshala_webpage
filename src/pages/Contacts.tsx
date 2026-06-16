@@ -66,7 +66,7 @@ export default function Contacts() {
 
               <ul className="flex flex-col gap-6 mb-10">
                 {[
-                  { Icon: Phone, label: '+38 (077) 073 73 00', sub: 'Щодня · 08:00 — 22:00' },
+                  { Icon: Phone, label: '+38 (077) 073 73 00', sub: 'Щодня · 08:00 — 17:00' },
                   { Icon: MapPin, label: 'Миколаївська обл., Вознесенський р-н', sub: 'Прибузька громада' },
                   { Icon: Clock, label: 'Заїзд з 15:00', sub: 'Виїзд до 11:00' },
                 ].map(({ Icon, label, sub }) => (

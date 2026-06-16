@@ -17,7 +17,7 @@ const NAV = [
   { label: 'Про нас', href: '#about-section' },
   { label: 'Будиночки', to: '/houses' },
   { label: 'Рибалка', to: '/fishing' },
-  { label: 'Беседки', to: '/leisure' },
+  { label: 'Альтанки', to: '/leisure' },
   { label: 'Контакти', to: '/contacts' },
 ]
 
@@ -89,7 +89,7 @@ export default function Footer() {
                 <a href="tel:+380770737300" className="hover:text-bakshala-sand transition-colors">
                   +38 (077) 073 73 00
                   <br />
-                  <span className="text-white/50">Щодня · 08:00 — 22:00</span>
+                  <span className="text-white/50">Щодня · 08:00 — 17:00</span>
                 </a>
               </li>
               <li className="flex gap-3.5 text-[14px] text-white/72 leading-relaxed">

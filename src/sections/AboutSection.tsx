@@ -2,19 +2,19 @@ import { Fish, Bed, Waves, Leaf, Flame, UtensilsCrossed } from 'lucide-react'
 import SectionBadge from '../components/ui/SectionBadge'
 
 const SERVICES = [
-  { name: 'Рибалка', desc: 'Власна водойма, цілодобовий доступ', Icon: Fish },
-  { name: 'Проживання', desc: '4 затишних будиночки', Icon: Bed },
-  { name: 'Водойма', desc: 'Чиста вода, пірси, човни', Icon: Waves },
+  { name: 'Рибалка', desc: 'Власна водойма, пірс та рибалка (світловий день)', Icon: Fish },
+  { name: 'Проживання', desc: '9 затишних будиночків', Icon: Bed },
+  { name: 'Водойма', desc: 'Сап-дошки, каяки, власний пляж', Icon: Waves },
   { name: 'Природа', desc: '60 гектарів власної території', Icon: Leaf },
   { name: 'Дозвілля', desc: 'Беседки, вогнище, активності', Icon: Flame },
-  { name: 'Кухня', desc: 'Локальні страви, авторське меню', Icon: UtensilsCrossed },
+  { name: 'Кухня', desc: 'Замовлення їжі · готовність 1–1,5 год', Icon: UtensilsCrossed },
 ]
 
 const STATS = [
   { num: '120+', label: 'Задоволених гостей' },
   { num: '60 га', label: 'Власна територія' },
   { num: '1', label: 'Власна водойма' },
-  { num: '4', label: 'Затишних будиночки' },
+  { num: '9', label: 'Затишних будиночки' },
 ]
 
 function ServiceCard({

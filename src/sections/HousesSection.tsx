@@ -45,7 +45,7 @@ export default function HousesSection() {
             Оберіть свій <em className="text-bakshala-sand">будиночок</em>
           </h2>
           <p className="mt-5 text-bakshala-text/60 leading-[1.7] text-[15px]">
-            Чотири затишних простори для відпочинку — кожен зі своїм характером.
+            Дев'ять затишних просторів для відпочинку — кожен зі своїм характером.
           </p>
         </div>
 
@@ -132,7 +132,7 @@ export default function HousesSection() {
                     ₴&nbsp;{house.priceNum.toLocaleString('uk-UA')}
                   </div>
                   <div className="text-[13px] text-bakshala-text/50 mt-1.5">
-                    за добу · сніданок включено
+                    за добу
                   </div>
                 </div>
                 <div className="flex items-center gap-4 flex-wrap">
