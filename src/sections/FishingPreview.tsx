@@ -20,7 +20,7 @@ export default function FishingPreview() {
       <div className="relative min-h-[480px] md:min-h-[640px] overflow-hidden">
         <img
           src={`${import.meta.env.BASE_URL}fishing.jpg`}
-          alt="Рибалка на озері"
+          alt="Рибалка на водоймі"
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -36,17 +36,17 @@ export default function FishingPreview() {
             backgroundSize: '22px 22px',
           }}
         />
-        <div className="relative px-12 py-[clamp(64px,8vw,120px)] max-w-[600px]">
+        <div className="relative px-12 py-[clamp(40px,5vw,60px)] max-w-[600px]">
           <SectionBadge>Рибальський рай</SectionBadge>
           <h2
             className="font-serif font-light tracking-tight mt-3.5 mb-7"
             style={{ fontSize: 'clamp(36px, 4.6vw, 58px)', lineHeight: 1.05 }}
           >
-            Озеро, <em className="text-bakshala-lake">де клює</em> завжди
+            Водойма, <em className="text-bakshala-lake">де клює</em> завжди
           </h2>
           <p className="text-bakshala-text/70 leading-[1.78] text-[15px] mb-4">
-            Наше приватне озеро площею 5 гектарів — справжній рай для рибалок. Тут водяться
-            короп, щука, карась та лящ. Прозора вода, тихі береги і ранковий туман над
+            Наша приватна водойма площею 10 гектарів — справжній рай для рибалок. Тут водяться
+            короп, щука, карась та лящ. Тихі береги і ранковий туман над
             поверхнею створюють неповторну атмосферу.
           </p>
           <p className="text-bakshala-text/70 leading-[1.78] text-[15px] mb-9">

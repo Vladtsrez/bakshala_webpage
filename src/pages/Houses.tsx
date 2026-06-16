@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
   Users, Phone, Send, MessageCircle, AlertTriangle, X, Ban,
-  Percent, Zap, PawPrint, Clock, Shield, Key, Flame, Volume2,
+  Zap, PawPrint, Clock, Shield, Key, Flame, Volume2,
   Siren, Cctv, TreePine, BedDouble, Star,
 } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -39,7 +39,6 @@ const STEPS = [
 ]
 
 const PERKS = [
-  { Icon: Percent, title: 'Знижки на проживання', desc: 'При бронюванні на 2+ доби — 5%, для військових — 10%.', tag: '−5% / −10%' },
   { Icon: Zap,     title: 'Світло завжди',        desc: 'Під час відключень працюють генератори та інверторні акумулятори — світло є навіть під час тривалих відключень.', tag: null },
   { Icon: PawPrint, title: 'Можна з улюбленцем', desc: 'Розміщення з тваринами — за погодженням і наявності вільного будиночка. Потрібні паспорт тварини та довідка про щеплення.', tag: null },
   { Icon: Clock,   title: 'Ранній / пізній заїзд', desc: 'Можливий, якщо до або після вас немає інших гостей — цей час потрібен на прибирання.', tag: null },
@@ -137,7 +136,7 @@ export default function Houses() {
 
       {/* ── HERO ── */}
       <PageHero
-        image="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1920&h=1080&fit=crop"
+        image={`${import.meta.env.BASE_URL}House-hero.JPG`}
         title="Будиночки та"
         titleEm="умови проживання"
         badge="Проживання"
@@ -145,7 +144,7 @@ export default function Houses() {
       />
 
       {/* ── HOUSE CARDS ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore">
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="text-center max-w-[720px] mx-auto mb-[72px]">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -202,7 +201,7 @@ export default function Houses() {
       </section>
 
       {/* ── WELCOME QUOTE ── */}
-      <section className="pt-[clamp(80px,10vw,130px)] pb-0 bg-bakshala-shore">
+      <section className="pt-[clamp(48px,5vw,72px)] pb-0 bg-bakshala-shore">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal>
             <div className="text-center max-w-[760px] mx-auto">
@@ -221,7 +220,7 @@ export default function Houses() {
       </section>
 
       {/* ── BOOKING ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-[#FAFAFA]" id="booking">
+      <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="booking">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -274,7 +273,9 @@ export default function Houses() {
                     +38 077 073 73 00
                   </a>
                   <a
-                    href="#"
+                    href="https://t.me/bakshalaranch_bot"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-3.5 text-white text-[15.5px] pb-3.5 border-b border-white/[0.13] hover:text-bakshala-sand transition-colors"
                   >
                     <span className="text-bakshala-sand flex-shrink-0"><Send size={18} strokeWidth={1.5} /></span>
@@ -301,7 +302,7 @@ export default function Houses() {
       </section>
 
       {/* ── CHECK-IN / CHECK-OUT TIMES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-deep relative overflow-hidden" id="times">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-deep relative overflow-hidden" id="times">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -361,7 +362,7 @@ export default function Houses() {
       </section>
 
       {/* ── PERKS ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore" id="perks">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="perks">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -376,7 +377,7 @@ export default function Houses() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {PERKS.map(({ Icon, title, desc, tag }, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <div className="flex gap-4 items-start p-7 border border-bakshala-text/10 bg-white hover:border-bakshala-lake hover:-translate-y-0.5 transition-all duration-[350ms] h-full">
@@ -400,7 +401,7 @@ export default function Houses() {
       </section>
 
       {/* ── RULES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-[#FAFAFA]" id="rules">
+      <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="rules">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -439,7 +440,7 @@ export default function Houses() {
       </section>
 
       {/* ── PROHIBITED ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore" id="prohibited">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="prohibited">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -494,7 +495,7 @@ export default function Houses() {
       </section>
 
       {/* ── FINES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-[#FAFAFA]" id="fines">
+      <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="fines">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -545,7 +546,7 @@ export default function Houses() {
       </section>
 
       {/* ── SAFETY ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-deep relative overflow-hidden" id="safety">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-deep relative overflow-hidden" id="safety">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

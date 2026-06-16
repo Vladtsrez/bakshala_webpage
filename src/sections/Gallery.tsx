@@ -8,7 +8,7 @@ export default function Gallery() {
   const { selectedIndex, setSelectedIndex, isOpen } = useLightbox(gallery)
 
   return (
-    <section className="py-[130px] bg-bakshala-shore" id="gallery">
+    <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="gallery">
       <div className="max-w-[1280px] mx-auto px-8">
         <div className="text-center max-w-[720px] mx-auto mb-[72px]">
           <div className="w-14 h-px bg-bakshala-sand mx-auto mb-5" />
@@ -24,19 +24,19 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Masonry grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {gallery.map((src, i) => (
             <button
               key={i}
               onClick={() => setSelectedIndex(i)}
-              className="break-inside-avoid mb-4 relative overflow-hidden block w-full group"
+              className="aspect-[4/3] relative overflow-hidden block w-full group"
             >
               <img
                 src={src}
                 alt={`Бакшала ${i + 1}`}
                 loading="lazy"
-                className="w-full h-auto transition-all duration-[800ms] ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-[1.03] group-hover:brightness-75"
+                className="w-full h-full object-cover transition-all duration-[800ms] ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-[1.03] group-hover:brightness-75"
               />
               <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/95 flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300">
                 <ZoomIn size={22} strokeWidth={1.4} className="text-bakshala-text" />

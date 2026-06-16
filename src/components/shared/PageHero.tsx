@@ -14,7 +14,7 @@ export default function PageHero({ image, title, titleEm, subtitle, badge }: Pro
     <section className="relative h-[60vh] min-h-[480px] overflow-hidden text-white flex items-center justify-center">
       <div className="absolute inset-0">
         <img src={image} alt={title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+        <div className="absolute inset-0 bg-black/55" />
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
@@ -37,7 +37,7 @@ export default function PageHero({ image, title, titleEm, subtitle, badge }: Pro
           {titleEm && (
             <>
               {' '}
-              <em className="italic text-bakshala-sand/90">{titleEm}</em>
+              <em className="italic text-white">{titleEm}</em>
             </>
           )}
         </motion.h1>

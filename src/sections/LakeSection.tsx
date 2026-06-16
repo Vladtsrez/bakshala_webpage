@@ -1,8 +1,16 @@
 import ScrollExpandMedia from '../components/ui/scroll-expansion-hero'
 import SectionBadge from '../components/ui/SectionBadge'
 
-const LAKE_BG = 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&h=1080&fit=crop'
-const LAKE_MEDIA = 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1280&h=720&fit=crop'
+const BASE = import.meta.env.BASE_URL
+const LAKE_BG = `${BASE}Озеро.JPG`
+const LAKE_MEDIA = `${BASE}Озеро.JPG`
+
+const STATS = [
+  { value: '10 га', label: 'площа водойми' },
+  { value: '1840 м', label: 'берегова лінія' },
+  { value: '390 м', label: 'ширина' },
+  { value: '8 м', label: 'найглибша точка' },
+]
 
 export default function LakeSection() {
   return (
@@ -12,15 +20,15 @@ export default function LakeSection() {
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="text-center max-w-[720px] mx-auto">
             <div className="w-14 h-px bg-bakshala-sand mx-auto mb-5" />
-            <SectionBadge>Озеро та територія</SectionBadge>
+            <SectionBadge>Водойма та територія</SectionBadge>
             <h2
               className="font-serif font-light tracking-tight mt-4"
               style={{ fontSize: 'clamp(34px, 4.8vw, 62px)', lineHeight: 1.05 }}
             >
-              Пʼять гектарів <em className="text-bakshala-sand">краси</em>
+              Десять гектарів <em className="text-bakshala-sand">краси</em>
             </h2>
             <p className="mt-5 text-bakshala-text leading-[1.7] text-[15px]">
-              Власне озеро, берегова лінія, лісова зона та простір для відпочинку. Прокрутіть,
+              Власна водойма, берегова лінія та простір для відпочинку. Прокрутіть,
               щоб відчути простір крізь оптику нашого обʼєктива.
             </p>
           </div>
@@ -32,29 +40,39 @@ export default function LakeSection() {
         mediaType="image"
         mediaSrc={LAKE_MEDIA}
         bgImageSrc={LAKE_BG}
-        title="Озеро Бакшала"
-        date="5 га"
+        title="Водойма Бакшала"
+        date="10 га"
         scrollToExpand="Прокрутіть для перегляду"
         textBlend
       >
-        <div className="max-w-3xl mx-auto text-center ">
+        <div className="max-w-3xl mx-auto text-center">
           <SectionBadge>Наша природа</SectionBadge>
           <h3
             className="font-serif font-light tracking-tight mt-4 mb-7 text-bakshala-text"
             style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: 1.1 }}
           >
-            Чиста вода, тінисті береги,{' '}
+            Власний ставок, тінисті береги,{' '}
             <em className="text-bakshala-sand">незаймана природа</em>
           </h3>
-          <p className="text-bakshala-text leading-[1.8] text-[15px] mb-5 ">
-            Озеро площею 5 гектарів з піщаним дном і прозорою водою — серце Ранчо Бакшала.
-            Тінисті дерева вздовж берегової лінії, тихі куточки для відпочинку та власна
-            лісова зона з пішохідними стежками.
+          <p className="text-bakshala-text leading-[1.8] text-[15px] mb-5">
+            Водойма площею 10 гектарів з глиняно-листовим дном — серце Ранчо Бакшала.
+            Зарибленa білою (мирною) та хижою рибою, з береговою лінією 1840 м та
+            середньою глибиною 4 м.
           </p>
-          <p className="text-bakshala-text leading-[1.8] text-[15px]">
-            Взимку озеро замерзає — відкриваючи сезон ковзанів і зимової рибалки. Чотири
-            пори року, кожна зі своїм настроєм і красою.
+          <p className="text-bakshala-text leading-[1.8] text-[15px] mb-10">
+            Тінисті береги та тихі куточки для відпочинку, ідеальні умови для спортивної
+            і любительської риболовлі — чотири пори року, кожна зі своїм настроєм і красою.
           </p>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px border border-bakshala-text/10 bg-bakshala-text/10">
+            {STATS.map(({ value, label }) => (
+              <div key={label} className="bg-bakshala-shore px-6 py-7 text-center">
+                <div className="font-serif text-[28px] font-light text-bakshala-text">{value}</div>
+                <div className="text-[11px] tracking-widest uppercase text-bakshala-text/50 mt-1">{label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </ScrollExpandMedia>
     </>

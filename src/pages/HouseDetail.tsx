@@ -1,6 +1,8 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { Users, ArrowLeft, Wifi, Bath, Coffee, Flame, Car, Waves, ArrowRight, Tv, Wind } from 'lucide-react'
+import { Users, ArrowLeft, Wifi, Bath, Coffee, Flame, Car, Waves, ArrowRight, Tv, Wind, X } from 'lucide-react'
+import { openBooking } from '../lib/openBooking'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { houses } from '../data/houses'
 import PageTransition from '../components/shared/PageTransition'
 import SectionBadge from '../components/ui/SectionBadge'
@@ -14,59 +16,116 @@ const ICONS: Record<string, React.FC<{ size?: number; className?: string }>> = {
 export default function HouseDetail() {
   const { id } = useParams<{ id: string }>()
   const house = houses.find((h) => h.id === id)
-  const [activeImg, setActiveImg] = useState(0)
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
 
   if (!house) return <Navigate to="/houses" replace />
 
   const allImages = [house.image, ...house.images]
 
+  const openLightbox = (i: number) => setLightboxIdx(i)
+  const closeLightbox = () => setLightboxIdx(null)
+  const prev = () => setLightboxIdx((i) => (i! - 1 + allImages.length) % allImages.length)
+  const next = () => setLightboxIdx((i) => (i! + 1) % allImages.length)
+
   return (
     <PageTransition>
-      {/* Hero */}
-      <div className="relative h-[60vh] min-h-[480px] overflow-hidden">
-        <img
-          src={allImages[activeImg]}
-          alt={house.name}
-          className="w-full h-full object-cover transition-opacity duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
-
-        <Link
-          to="/houses"
-          className="absolute top-24 left-8 flex items-center gap-2 text-white text-[13px] tracking-widest uppercase hover:gap-4 transition-[gap] duration-200"
-        >
-          <ArrowLeft size={16} /> Всі будиночки
-        </Link>
-
-        <div className="absolute bottom-8 left-8 text-white">
-          <div className="text-[11px] tracking-[0.24em] uppercase text-bakshala-sand/90 mb-2">
+      {/* ── Page header (no background image) ── */}
+      <div className="bg-bakshala-deep pt-32 pb-14 px-8">
+        <div className="max-w-[1280px] mx-auto">
+          <Link
+            to="/houses"
+            className="inline-flex items-center gap-2 text-bakshala-mist/70 text-[12px] tracking-widest uppercase hover:text-bakshala-mist transition-colors mb-8"
+          >
+            <ArrowLeft size={14} /> Всі будиночки
+          </Link>
+          <div className="text-[11px] tracking-[0.28em] uppercase text-bakshala-sand mb-3">
             Ранчо Бакшала
           </div>
           <h1
-            className="font-serif font-light leading-tight"
-            style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}
+            className="font-serif font-light text-white leading-tight"
+            style={{ fontSize: 'clamp(36px, 5vw, 68px)' }}
           >
             {house.name}
           </h1>
-        </div>
-
-        {/* Thumbnail strip */}
-        <div className="absolute bottom-8 right-8 flex gap-2">
-          {allImages.map((src, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveImg(i)}
-              className={`w-16 h-12 overflow-hidden border-2 transition-colors ${
-                i === activeImg ? 'border-bakshala-sand' : 'border-white/30 hover:border-white/70'
-              }`}
-            >
-              <img src={src} alt="" className="w-full h-full object-cover" />
-            </button>
-          ))}
+          <div className="flex items-center gap-6 mt-5 text-bakshala-mist/60 text-[14px]">
+            <div className="flex items-center gap-2"><Users size={15} /> {house.capacity}</div>
+            <div>·</div>
+            <div>{house.area}</div>
+            <div>·</div>
+            <div className="text-bakshala-sand font-light">{house.price}</div>
+          </div>
         </div>
       </div>
 
-      {/* Content */}
+      {/* ── Gallery ── */}
+      <section className="bg-[#111] py-8 px-8">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="columns-2 md:columns-3 gap-3">
+            {allImages.map((src, i) => (
+              <div
+                key={i}
+                className="break-inside-avoid mb-3 overflow-hidden cursor-zoom-in group"
+                onClick={() => openLightbox(i)}
+              >
+                <img
+                  src={src}
+                  alt={`${house.name} — фото ${i + 1}`}
+                  loading={i < 3 ? 'eager' : 'lazy'}
+                  className="w-full h-auto block group-hover:opacity-90 transition-opacity duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Lightbox ── */}
+      <AnimatePresence>
+        {lightboxIdx !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
+            onClick={closeLightbox}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
+            >
+              <X size={28} />
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); prev() }}
+              className="absolute left-6 text-white/70 hover:text-white text-4xl leading-none transition-colors select-none"
+            >
+              ‹
+            </button>
+            <motion.img
+              key={lightboxIdx}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2 }}
+              src={allImages[lightboxIdx]}
+              alt=""
+              className="max-h-[90vh] max-w-[90vw] object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button
+              onClick={(e) => { e.stopPropagation(); next() }}
+              className="absolute right-6 text-white/70 hover:text-white text-4xl leading-none transition-colors select-none"
+            >
+              ›
+            </button>
+            <div className="absolute bottom-6 text-white/40 text-[13px] tracking-widest">
+              {lightboxIdx + 1} / {allImages.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Content ── */}
       <section className="py-[90px] bg-bakshala-shore">
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-16">
@@ -80,15 +139,7 @@ export default function HouseDetail() {
                 {house.name}
               </h2>
 
-              <div className="flex items-center gap-6 mb-8 text-bakshala-text/60 text-[14px]">
-                <div className="flex items-center gap-2">
-                  <Users size={16} /> {house.capacity}
-                </div>
-                <div>·</div>
-                <div>{house.area}</div>
-              </div>
-
-              <p className="text-bakshala-text/70 leading-[1.8] text-[15px] mb-10">
+              <p className="text-bakshala-text/70 leading-[1.8] text-[15px] mb-10 whitespace-pre-line">
                 {house.longDescription}
               </p>
 
@@ -113,20 +164,20 @@ export default function HouseDetail() {
                 <div className="font-serif font-light text-[44px] leading-none mb-1">
                   ₴&nbsp;{house.priceNum.toLocaleString('uk-UA')}
                 </div>
-                <div className="text-[13px] text-bakshala-text/50 mb-8">за добу · сніданок включено</div>
+                <div className="text-[13px] text-bakshala-text/50 mb-8">за добу</div>
 
-                <Link
-                  to="/contacts"
+                <button
+                  onClick={openBooking}
                   className="block w-full text-center bg-bakshala-sand text-white py-4 text-[12px] tracking-widest uppercase hover:bg-bakshala-sand/90 transition-colors mb-3"
                 >
                   Забронювати
-                </Link>
-                <Link
-                  to="/contacts"
+                </button>
+                <button
+                  onClick={openBooking}
                   className="block w-full text-center border border-bakshala-text py-4 text-[12px] tracking-widest uppercase hover:bg-bakshala-text hover:text-white transition-all"
                 >
                   Запитати
-                </Link>
+                </button>
 
                 <div className="mt-8 pt-8 border-t border-bakshala-text/10">
                   <div className="text-[12px] text-bakshala-text/50 mb-3 tracking-widest uppercase">Інші варіанти</div>
@@ -138,9 +189,7 @@ export default function HouseDetail() {
                         className="flex items-center justify-between text-[13px] py-2 border-b border-bakshala-text/8 hover:text-bakshala-lake transition-colors"
                       >
                         <span>{h.name}</span>
-                        <span className="text-bakshala-text/50">
-                          ₴&nbsp;{h.priceNum.toLocaleString('uk-UA')}
-                        </span>
+                        <span className="text-bakshala-text/50">₴&nbsp;{h.priceNum.toLocaleString('uk-UA')}</span>
                       </Link>
                     ))}
                   </div>
@@ -154,9 +203,9 @@ export default function HouseDetail() {
             <Link to="/houses" className="flex items-center gap-2 text-[13px] tracking-widest uppercase text-bakshala-text/60 hover:text-bakshala-text transition-colors">
               <ArrowLeft size={14} /> Всі будиночки
             </Link>
-            <Link to="/contacts" className="flex items-center gap-2 text-[13px] tracking-widest uppercase text-bakshala-lake">
+            <button onClick={openBooking} className="flex items-center gap-2 text-[13px] tracking-widest uppercase text-bakshala-lake">
               Забронювати <ArrowRight size={14} />
-            </Link>
+            </button>
           </div>
         </div>
       </section>

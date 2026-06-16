@@ -16,7 +16,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={`${import.meta.env.BASE_URL}Hero.jpg`}
-          alt="Ранчо Бакшала — вид на озеро"
+          alt="Ранчо Бакшала — вид на водойму"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/55" />
@@ -44,7 +44,7 @@ export default function HeroSection() {
           className="text-white/86 max-w-[560px] mx-auto mb-9 leading-relaxed"
           style={{ fontSize: 'clamp(15px, 1.4vw, 18px)' }}
         >
-          Затишні будиночки, власне озеро та незабутня рибалка в&nbsp;серці України.
+          Затишні будиночки, власна водойма та незабутня рибалка в&nbsp;серці України.
         </motion.p>
 
         <motion.div

@@ -1,12 +1,16 @@
 import {
   Clock, Leaf, Utensils, Flame, Volume2, Star, Shield, Ban, X,
   Waves, Cctv, Car, TreePine, Phone, Send, MessageCircle, AlertTriangle,
-  ChevronDown,
+  ChevronDown, Wifi, Wind, Refrigerator, Tv, Sofa, Armchair,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import PageTransition from '../components/shared/PageTransition'
 import SectionBadge from '../components/ui/SectionBadge'
+import { openBooking } from '../lib/openBooking'
+
+const BASE = import.meta.env.BASE_URL
 
 function Reveal({
   children, delay = 0, className = '',
@@ -32,18 +36,50 @@ function Reveal({
 
 const GAZEBOS = [
   {
+    id: 'small',
     name: 'Мала альтанка',
-    capacity: 'до 6 осіб',
-    img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&h=400&fit=crop',
-    desc: 'Затишна відкрита альтанка біля самого берега. Оснащена мангалом та зоною для відпочинку.',
-    price: '₴2 400 / день',
+    capacity: 'до 8–10 осіб',
+    price: '8 000 ₴',
+    desc: 'Панорамна закрита альтанка з мангальною зоною, кондиціонером та холодильником. У вартість входить риболовля — подарунок 2 рибини до 10 кг.',
+    amenities: [
+      { Icon: Wifi,         label: 'WiFi' },
+      { Icon: Wind,         label: 'Кондиціонер' },
+      { Icon: Refrigerator, label: 'Холодильник' },
+      { Icon: Armchair,     label: 'Диван або крісла' },
+      { Icon: Flame,        label: 'Мангал + приладдя' },
+      { Icon: Waves,        label: 'Риболовля включена' },
+    ],
+    images: [
+      `${BASE}Leisure-1_1.JPG`,
+      `${BASE}Leisure-1_2.JPG`,
+      `${BASE}Leisure-1_3.JPG`,
+      `${BASE}Leisure-1_4.JPG`,
+      `${BASE}Leisure-1_5.JPG`,
+      `${BASE}Leisure-1_6.JPG`,
+    ],
   },
   {
+    id: 'big',
     name: 'Велика альтанка',
-    capacity: 'до 15 осіб',
-    img: 'https://images.unsplash.com/photo-1455218873509-8097305ee378?w=600&h=400&fit=crop',
-    desc: 'Простора крита альтанка з повним облаштуванням, ідеальна для вечірок та корпоративів.',
-    price: '₴2 900 / день',
+    capacity: 'до 15–17 осіб',
+    price: '10 000 ₴',
+    desc: 'Простора панорамна альтанка закритого типу з телевізором, кондиціонером, шезлонгами та великою мангальною групою. Ідеальна для вечірок та корпоративів.',
+    amenities: [
+      { Icon: Wifi,         label: 'WiFi' },
+      { Icon: Tv,           label: 'Телевізор' },
+      { Icon: Wind,         label: 'Кондиціонер' },
+      { Icon: Refrigerator, label: 'Холодильник' },
+      { Icon: Sofa,         label: 'Диван + 2 шезлонги' },
+      { Icon: Flame,        label: 'Мангал + приладдя' },
+    ],
+    images: [
+      `${BASE}Leisure-2_1.JPG`,
+      `${BASE}Leisure-2_2.JPG`,
+      `${BASE}Leisure-2_3.JPG`,
+      `${BASE}Leisure-2_4.JPG`,
+      `${BASE}Leisure-2_5.JPG`,
+      `${BASE}Leisure-2_6.JPG`,
+    ],
   },
 ]
 
@@ -134,6 +170,13 @@ const SAFE = [
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function Leisure() {
+  const [lightbox, setLightbox] = useState<{ gazeboId: string; idx: number } | null>(null)
+
+  const closeLightbox = () => setLightbox(null)
+  const lightboxImages = lightbox ? GAZEBOS.find((g) => g.id === lightbox.gazeboId)!.images : []
+  const prevImg = () => setLightbox((l) => l && ({ ...l, idx: (l.idx - 1 + lightboxImages.length) % lightboxImages.length }))
+  const nextImg = () => setLightbox((l) => l && ({ ...l, idx: (l.idx + 1) % lightboxImages.length }))
+
   return (
     <PageTransition>
 
@@ -145,7 +188,7 @@ export default function Leisure() {
       >
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&h=1080&fit=crop"
+            src={`${BASE}Leisure-hero.JPG`}
             alt="Альтанки"
             className="w-full h-full object-cover"
           />
@@ -199,12 +242,12 @@ export default function Leisure() {
             transition={{ duration: 0.7, delay: 0.35 }}
             className="flex gap-3.5 justify-center flex-wrap mt-8"
           >
-            <a
-              href="#booking"
+            <button
+              onClick={openBooking}
               className="bg-bakshala-sand text-white border border-bakshala-sand px-7 py-3.5 text-[13px] tracking-wider rounded-full hover:bg-bakshala-sand/90 transition-colors"
             >
               Забронювати альтанку
-            </a>
+            </button>
             <a
               href="#rules"
               className="bg-transparent text-white border border-white/60 px-7 py-3.5 text-[13px] tracking-wider rounded-full hover:border-white hover:bg-white/10 transition-colors"
@@ -224,9 +267,9 @@ export default function Leisure() {
         </a>
       </section>
 
-      {/* ── GAZEBO CARDS ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore" id="gazebos">
-        <div className="max-w-[1280px] mx-auto px-8">
+      {/* ── GAZEBO SECTIONS ── */}
+      <section className="bg-bakshala-shore" id="gazebos">
+        <div className="max-w-[1280px] mx-auto px-8 pt-[clamp(48px,5vw,72px)]">
           <div className="text-center max-w-[720px] mx-auto mb-[72px]">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
             <SectionBadge>Альтанки</SectionBadge>
@@ -237,45 +280,120 @@ export default function Leisure() {
               Оберіть свою <em className="text-bakshala-sand">альтанку</em>
             </h2>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {GAZEBOS.map((g) => (
-              <div
-                key={g.name}
-                className="group overflow-hidden border border-bakshala-text/10 hover:border-bakshala-lake transition-colors duration-300"
-              >
-                <div className="overflow-hidden aspect-[3/2]">
-                  <img
-                    src={g.img}
-                    alt={g.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-[1s] ease-[cubic-bezier(.22,.61,.36,1)]"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="font-serif font-light text-[26px]">{g.name}</h3>
-                    <span className="text-[11px] tracking-widest uppercase text-bakshala-sand">{g.capacity}</span>
-                  </div>
-                  <p className="text-bakshala-text/60 text-[13.5px] leading-relaxed mb-4">{g.desc}</p>
-                  <div className="flex justify-between items-center pt-4 border-t border-bakshala-text/10">
-                    <span className="font-serif text-[22px] font-light">{g.price}</span>
-                    <Link
-                      to="/contacts"
-                      className="text-[12px] tracking-widest uppercase text-bakshala-lake border-b border-bakshala-lake pb-0.5 hover:text-bakshala-dark hover:border-bakshala-dark transition-colors"
+        {GAZEBOS.map((g, gi) => (
+          <div key={g.id} className={`pb-[clamp(40px,5vw,60px)] ${gi > 0 ? 'border-t border-bakshala-text/10 pt-[clamp(40px,5vw,60px)]' : ''}`}>
+            <div className="max-w-[1280px] mx-auto px-8">
+              {/* Header */}
+              <Reveal className="mb-8">
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-2">
+                  <div>
+                    <div className="text-[11px] tracking-[0.28em] uppercase text-bakshala-sand mb-2">{g.capacity}</div>
+                    <h3
+                      className="font-serif font-light tracking-tight"
+                      style={{ fontSize: 'clamp(28px, 3.6vw, 48px)', lineHeight: 1.05 }}
                     >
-                      Орендувати →
-                    </Link>
+                      {g.name}
+                    </h3>
                   </div>
+                  <div className="flex items-center gap-6 flex-shrink-0">
+                    <div className="text-right">
+                      <div className="font-serif font-light text-[36px] leading-none">{g.price}</div>
+                      <div className="text-[12px] text-bakshala-text/50 mt-1">за день</div>
+                    </div>
+                    <button
+                      onClick={openBooking}
+                      className="bg-bakshala-sand text-white px-6 py-3 text-[12px] tracking-widest uppercase hover:bg-bakshala-sand/90 transition-colors whitespace-nowrap"
+                    >
+                      Орендувати
+                    </button>
+                  </div>
+                </div>
+                <p className="text-bakshala-text/60 text-[14.5px] leading-relaxed max-w-2xl">{g.desc}</p>
+              </Reveal>
+
+              {/* Gallery */}
+              <div className="bg-[#111] p-3 mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {g.images.map((src, i) => (
+                    <div
+                      key={i}
+                      className="aspect-[4/3] overflow-hidden cursor-zoom-in group"
+                      onClick={() => setLightbox({ gazeboId: g.id, idx: i })}
+                    >
+                      <img
+                        src={src}
+                        alt={`${g.name} — фото ${i + 1}`}
+                        loading={gi === 0 && i < 2 ? 'eager' : 'lazy'}
+                        className="w-full h-full object-cover group-hover:opacity-85 transition-opacity duration-300"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+
+              {/* Amenities */}
+              <Reveal>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+                  {g.amenities.map(({ Icon, label }) => (
+                    <div key={label} className="flex items-center gap-2.5 text-[13px] text-bakshala-text/70 p-3 border border-bakshala-text/10 bg-white/50">
+                      <Icon size={16} className="text-bakshala-sand flex-shrink-0" />
+                      {label}
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
           </div>
-        </div>
+        ))}
       </section>
 
+      {/* ── LIGHTBOX ── */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
+            onClick={closeLightbox}
+          >
+            <button onClick={closeLightbox} className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors">
+              <X size={28} />
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImg() }}
+              className="absolute left-6 text-white/70 hover:text-white text-4xl leading-none transition-colors select-none"
+            >
+              ‹
+            </button>
+            <motion.img
+              key={`${lightbox.gazeboId}-${lightbox.idx}`}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2 }}
+              src={lightboxImages[lightbox.idx]}
+              alt=""
+              className="max-h-[90vh] max-w-[90vw] object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImg() }}
+              className="absolute right-6 text-white/70 hover:text-white text-4xl leading-none transition-colors select-none"
+            >
+              ›
+            </button>
+            <div className="absolute bottom-6 text-white/40 text-[13px] tracking-widest">
+              {lightbox.idx + 1} / {lightboxImages.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ── WELCOME QUOTE ── */}
-      <section className="pt-[clamp(80px,10vw,130px)] pb-0 bg-bakshala-shore">
+      <section className="pt-[clamp(48px,5vw,72px)] pb-0 bg-bakshala-shore">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal>
             <div className="text-center max-w-[760px] mx-auto">
@@ -285,7 +403,7 @@ export default function Leisure() {
               >
                 Альтанка — це ваш окремий куточок{' '}
                 <span className="text-bakshala-lake not-italic">«Бакшали»</span>{' '}
-                на день: зустрічайте гостей, готуйте на мангалі та відпочивайте біля озера.
+                на день: зустрічайте гостей, готуйте на мангалі та відпочивайте біля водойми.
               </p>
             </div>
           </Reveal>
@@ -293,7 +411,7 @@ export default function Leisure() {
       </section>
 
       {/* ── BOOKING ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-[#FAFAFA]" id="booking">
+      <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="booking">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -346,7 +464,9 @@ export default function Leisure() {
                     +38 077 073 73 00
                   </a>
                   <a
-                    href="#"
+                    href="https://t.me/bakshalaranch_bot"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-3.5 text-white text-[15.5px] pb-3.5 border-b border-white/[0.13] hover:text-bakshala-sand transition-colors"
                   >
                     <span className="text-bakshala-sand flex-shrink-0"><Send size={18} strokeWidth={1.5} /></span>
@@ -373,7 +493,7 @@ export default function Leisure() {
       </section>
 
       {/* ── TIMES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-deep relative overflow-hidden" id="times">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-deep relative overflow-hidden" id="times">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -431,7 +551,7 @@ export default function Leisure() {
       </section>
 
       {/* ── RULES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-[#FAFAFA]" id="rules">
+      <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="rules">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -470,7 +590,7 @@ export default function Leisure() {
       </section>
 
       {/* ── PROHIBITED ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore" id="prohibited">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="prohibited">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -507,7 +627,7 @@ export default function Leisure() {
       </section>
 
       {/* ── FINES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-[#FAFAFA]" id="fines">
+      <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="fines">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -556,7 +676,7 @@ export default function Leisure() {
       </section>
 
       {/* ── SAFETY ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-deep relative overflow-hidden" id="safety">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-deep relative overflow-hidden" id="safety">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

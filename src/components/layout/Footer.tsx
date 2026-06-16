@@ -1,6 +1,6 @@
 import type React from 'react'
 import { Link } from 'react-router-dom'
-import { Send, Phone, Mail, MapPin } from 'lucide-react'
+import { Send, Phone, MapPin } from 'lucide-react'
 
 const IcoInstagram = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -17,7 +17,6 @@ const NAV = [
   { label: 'Про нас', href: '#about-section' },
   { label: 'Будиночки', to: '/houses' },
   { label: 'Рибалка', to: '/fishing' },
-  { label: 'Озеро', to: '/lake' },
   { label: 'Беседки', to: '/leisure' },
   { label: 'Контакти', to: '/contacts' },
 ]
@@ -33,17 +32,19 @@ export default function Footer() {
               Ранчо <span className="text-bakshala-sand">Бакшала</span>
             </div>
             <p className="mt-5 font-serif text-[22px] font-light leading-[1.35] text-white max-w-xs">
-              Відпочинок на березі озера в&nbsp;серці природи.
+              Відпочинок на березі водойми в&nbsp;серці природи.
             </p>
             <div className="flex gap-3 mt-7 text-white ">
               {([
-                { el: <IcoInstagram />, label: 'Instagram' },
-                { el: <IcoFacebook />, label: 'Facebook' },
-                { el: <Send size={18} />, label: 'Telegram' },
-              ] as { el: React.ReactNode; label: string }[]).map(({ el, label }) => (
+                { el: <IcoInstagram />, label: 'Instagram', href: '#' },
+                { el: <IcoFacebook />, label: 'Facebook', href: '#' },
+                { el: <Send size={18} />, label: 'Telegram', href: 'https://t.me/bakshalaranch_bot' },
+              ] as { el: React.ReactNode; label: string; href: string }[]).map(({ el, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target={href !== '#' ? '_blank' : undefined}
+                  rel={href !== '#' ? 'noopener noreferrer' : undefined}
                   aria-label={label}
                   className="w-[42px] h-[42px] rounded-full border border-white/18 flex items-center justify-center hover:bg-bakshala-sand hover:border-bakshala-sand hover:text-[#15140f] transition-all duration-200"
                 >
@@ -85,27 +86,24 @@ export default function Footer() {
             <ul className="flex flex-col gap-4 text-white">
               <li className="flex gap-3.5 text-[14px] text-white/72 leading-relaxed">
                 <Phone size={16} className="text-bakshala-sand flex-shrink-0 mt-0.5" />
-                <span>
-                  +38 (067) 123-45-67
+                <a href="tel:+380770737300" className="hover:text-bakshala-sand transition-colors">
+                  +38 (077) 073 73 00
                   <br />
                   <span className="text-white/50">Щодня · 08:00 — 22:00</span>
-                </span>
-              </li>
-              <li className="flex gap-3.5 text-[14px] text-white/72 leading-relaxed">
-                <Mail size={16} className="text-bakshala-sand flex-shrink-0 mt-0.5" />
-                <span>
-                  info@bakshala.com.ua
-                  <br />
-                  <span className="text-white/50">Бронювання та запити</span>
-                </span>
+                </a>
               </li>
               <li className="flex gap-3.5 text-[14px] text-white/72 leading-relaxed">
                 <MapPin size={16} className="text-bakshala-sand flex-shrink-0 mt-0.5" />
-                <span>
-                  Україна, Миколаївська обл.
+                <a
+                  href="https://share.google/h16KFrV3fmArtW48o"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-bakshala-sand transition-colors"
+                >
+                  Миколаївська обл., Вознесенський р-н
                   <br />
-                  <span className="text-white/50">с. Прибужжя</span>
-                </span>
+                  <span className="text-white/50">Прибузька громада</span>
+                </a>
               </li>
             </ul>
           </div>
@@ -115,10 +113,11 @@ export default function Footer() {
       <iframe
         className="w-full h-[320px] border-0"
         style={{ filter: 'grayscale(0.6) invert(0.88) contrast(0.85)' }}
-        src="https://maps.google.com/maps?q=48.9,28.8&z=13&output=embed"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2685.582382733123!2d31.218221099999997!3d47.692529799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cfa1bb269a972b%3A0x2d7a77a080829571!2z0KDQkNCd0KfQniDQkdCQ0JrQqNCQ0JvQkCDQoNC40LHQvtC70L7QstC70Y8v0JHRg9C00LjQvdC60Lgv0JDQu9GM0YLQsNC90LrQuA!5e0!3m2!1suk!2sua!4v1781604400750!5m2!1suk!2sua"
         title="Мапа — Ранчо Бакшала"
         loading="lazy"
         allowFullScreen
+        referrerPolicy="no-referrer-when-downgrade"
       />
 
       <div className="max-w-[1280px] mx-auto px-8">

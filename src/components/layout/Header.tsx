@@ -3,12 +3,12 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { lenis } from '../../lib/lenis'
+import { openBooking } from '../../lib/openBooking'
 
 const NAV_LINKS = [
   { label: 'Про нас', to: '/', isScroll: true },
   { label: 'Будиночки', to: '/houses' },
   { label: 'Рибалка', to: '/fishing' },
-  { label: 'Озеро', to: '/lake' },
   { label: 'Альтанки', to: '/leisure' },
   { label: 'Окремий пірс', to: '/pier' },
   { label: 'Контакти', to: '/contacts' },
@@ -92,12 +92,12 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Link
-              to="/contacts"
+            <button
+              onClick={openBooking}
               className={`hidden md:block border text-[12px] tracking-[0.14em] uppercase px-[22px] py-[11px] rounded-full hover:bg-bakshala-lake hover:border-bakshala-lake hover:text-white transition-all duration-200 ${scrolled ? 'border-bakshala-text text-bakshala-text' : 'border-white/80 text-white'}`}
             >
               Забронювати
-            </Link>
+            </button>
             <button
               onClick={() => setDrawerOpen(true)}
               className={`md:hidden w-11 h-11 flex items-center justify-center ${scrolled ? '' : 'text-white'}`}
@@ -159,13 +159,12 @@ export default function Header() {
               )}
             </nav>
 
-            <Link
-              to="/contacts"
-              onClick={() => setDrawerOpen(false)}
+            <button
+              onClick={() => { setDrawerOpen(false); openBooking() }}
               className="mt-12 self-start border border-bakshala-text text-[12px] tracking-widest uppercase px-5 py-2.5 rounded-full"
             >
               Забронювати
-            </Link>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

@@ -51,7 +51,6 @@ const PEACEFUL = [
   { name: 'осетр сибірський', rare: true },
   { name: 'осетр-альбінос', rare: true },
 ]
-const PREDATOR = ['сом', 'щука', 'судак', 'окунь']
 
 const INCLUDED = [
   { label: 'Короповий мат', Icon: Check },
@@ -135,7 +134,7 @@ export default function Fishing() {
       >
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?w=1920&h=1080&fit=crop"
+            src={`${import.meta.env.BASE_URL}pier-3.JPG`}
             alt="Риболовля"
             className="w-full h-full object-cover"
           />
@@ -170,7 +169,7 @@ export default function Fishing() {
             className="font-serif font-light text-[clamp(44px,6vw,84px)] leading-tight tracking-tight"
           >
             Риболовля на<br />
-            <em className="italic text-bakshala-sand/90">нашому озері</em>
+            <em className="italic text-white">нашій водоймі</em>
           </motion.h1>
 
           <motion.p
@@ -216,7 +215,7 @@ export default function Fishing() {
 
       {/* ── WATERBODY ── */}
       <section
-        className="py-[clamp(80px,10vw,130px)] bg-bakshala-deep relative overflow-hidden"
+        className="py-[clamp(48px,5vw,72px)] bg-bakshala-deep relative overflow-hidden"
         id="waterbody"
       >
         <div
@@ -233,7 +232,7 @@ export default function Fishing() {
               Характеристики водойми
             </div>
             <h2 className="font-serif font-light text-[clamp(34px,4vw,56px)] leading-[1.05] tracking-tight mb-5 text-white">
-              Озеро площею <em className="italic text-bakshala-sand">10 гектарів</em>
+              Водойма площею <em className="italic text-bakshala-sand">10 гектарів</em>
             </h2>
             <p className="text-[15px] leading-relaxed max-w-xl mx-auto text-white/60">
               Велике, глибоке й доглянуте — ставок розрахований на комфортну ловлю з пірсів по всьому периметру.
@@ -265,7 +264,7 @@ export default function Fishing() {
       </section>
 
       {/* ── SPECIES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore" id="species">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="species">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -273,69 +272,34 @@ export default function Fishing() {
               Видовий склад зариблення
             </div>
             <h2 className="font-serif font-light text-[clamp(34px,4vw,56px)] leading-[1.05] tracking-tight mb-5">
-              Хто водиться <em className="italic text-bakshala-sand">в озері</em>
+              Хто водиться <em className="italic text-bakshala-sand">у водоймі</em>
             </h2>
             <p className="text-[15px] leading-relaxed max-w-xl mx-auto text-bakshala-text/55">
-              Від коропа й білого амура до сома та щуки. Окремі види — рідкісні й охороняються: їх відпускають завжди.
+              Короп, амур, осетрові та інші. Рідкісні види охороняються — їх відпускають завжди.
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-[1.55fr_1fr] gap-14 items-start">
-            {/* Peaceful fish */}
-            <Reveal>
-              <div className="flex items-center gap-3.5 mb-6 pb-[18px] border-b border-bakshala-text/10">
-                <span className="w-11 h-11 rounded-full bg-bakshala-lake flex items-center justify-center text-white flex-shrink-0">
-                  <Fish size={22} strokeWidth={1.5} />
+          <Reveal>
+            <div className="flex flex-wrap gap-2.5 justify-center">
+              {PEACEFUL.map(({ name, rare }) => (
+                <span
+                  key={name}
+                  className={`px-4 py-2 rounded-full text-[13.5px] bg-white transition-all duration-[250ms] hover:-translate-y-0.5 cursor-default ${
+                    rare
+                      ? 'border border-bakshala-sand text-[#8A7248]'
+                      : 'border border-bakshala-text/[0.18] text-[#2a3845] hover:border-bakshala-lake hover:text-bakshala-dark'
+                  }`}
+                >
+                  {name}
                 </span>
-                <div>
-                  <h3 className="font-serif font-normal text-[28px] leading-[1.1]">Мирна (біла) риба</h3>
-                  <div className="text-[12px] text-[#6b7682] tracking-[0.04em] mt-0.5">Короп, амур, осетрові та інші</div>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-2.5">
-                {PEACEFUL.map(({ name, rare }) => (
-                  <span
-                    key={name}
-                    className={`px-4 py-2 rounded-full text-[13.5px] bg-white transition-all duration-[250ms] hover:-translate-y-0.5 cursor-default ${
-                      rare
-                        ? 'border border-bakshala-sand text-[#8A7248]'
-                        : 'border border-bakshala-text/[0.18] text-[#2a3845] hover:border-bakshala-lake hover:text-bakshala-dark'
-                    }`}
-                  >
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-
-            {/* Predator fish */}
-            <Reveal delay={0.08}>
-              <div className="flex items-center gap-3.5 mb-6 pb-[18px] border-b border-bakshala-text/10">
-                <span className="w-11 h-11 rounded-full bg-bakshala-dark flex items-center justify-center text-white flex-shrink-0">
-                  <Target size={22} strokeWidth={1.5} />
-                </span>
-                <div>
-                  <h3 className="font-serif font-normal text-[28px] leading-[1.1]">Хижа риба</h3>
-                  <div className="text-[12px] text-[#6b7682] tracking-[0.04em] mt-0.5">Для спінінгової ловлі</div>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-2.5">
-                {PREDATOR.map((name) => (
-                  <span
-                    key={name}
-                    className="px-4 py-2 rounded-full text-[13.5px] bg-white border border-bakshala-text/[0.18] text-[#2a3845] hover:border-bakshala-lake hover:text-bakshala-dark transition-all duration-[250ms] hover:-translate-y-0.5 cursor-default"
-                  >
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-          </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ── PRICE ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-[#FAFAFA]" id="price">
+      <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="price">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -398,7 +362,7 @@ export default function Fishing() {
       </section>
 
       {/* ── CATCH & RELEASE ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-lake text-white relative overflow-hidden">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-lake text-white relative overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <Reveal>
@@ -440,7 +404,7 @@ export default function Fishing() {
       </section>
 
       {/* ── RULES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore" id="rules">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="rules">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -455,7 +419,7 @@ export default function Fishing() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-14">
             {RULE_CARDS.map(({ Icon, title, items }, i) => (
               <Reveal key={i} delay={i * 0.06}>
                 <div className="border border-bakshala-text/10 bg-white p-8 hover:border-bakshala-lake hover:-translate-y-0.5 transition-all duration-[350ms] h-full">
@@ -496,13 +460,13 @@ export default function Fishing() {
       </section>
 
       {/* ── RENTAL ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore" id="rental">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="rental">
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <Reveal>
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1445112098124-3e76dd67983c?w=900&h=700&fit=crop"
+                  src={`${import.meta.env.BASE_URL}Rod.jpg`}
                   alt="Рибальське спорядження"
                   loading="lazy"
                   className="w-full h-full object-cover"
@@ -545,7 +509,7 @@ export default function Fishing() {
       </section>
 
       {/* ── FEED RULES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-[#FAFAFA]" id="feed">
+      <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="feed">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />

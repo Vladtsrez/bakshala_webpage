@@ -1,11 +1,22 @@
 import {
   Users, Anchor, Target, Check, Fish, Camera, Clock,
   AlertTriangle, Star, Shield, Droplet, ShoppingBag, Scale,
-  BedDouble, ChevronDown,
+  BedDouble, ChevronDown, X,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import PageTransition from '../components/shared/PageTransition'
+
+const BASE = import.meta.env.BASE_URL
+
+const GALLERY = [
+  `${BASE}pier-2.JPG`,
+  `${BASE}pier-3.JPG`,
+  `${BASE}pier-4.JPG`,
+  `${BASE}pier-5.JPG`,
+  `${BASE}pier-6.JPG`,
+]
 
 function Reveal({
   children, delay = 0, className = '',
@@ -78,6 +89,11 @@ const RULE_CARDS = [
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function Pier() {
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
+  const closeLightbox = () => setLightboxIdx(null)
+  const prev = () => setLightboxIdx((i) => (i! - 1 + GALLERY.length) % GALLERY.length)
+  const next = () => setLightboxIdx((i) => (i! + 1) % GALLERY.length)
+
   return (
     <PageTransition>
 
@@ -89,7 +105,7 @@ export default function Pier() {
       >
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1498887960847-2a5e46312788?w=1920&h=1080&fit=crop"
+            src={`${BASE}pier-hero.jpg`}
             alt="Окремий пірс"
             className="w-full h-full object-cover"
           />
@@ -169,8 +185,72 @@ export default function Pier() {
         </a>
       </section>
 
+      {/* ── GALLERY ── */}
+      <section className="bg-[#111] p-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {GALLERY.slice(0, 4).map((src, i) => (
+            <div
+              key={i}
+              className="aspect-[4/3] overflow-hidden cursor-zoom-in group"
+              onClick={() => setLightboxIdx(i)}
+            >
+              <img
+                src={src}
+                alt={`Пірс — фото ${i + 1}`}
+                loading={i < 2 ? 'eager' : 'lazy'}
+                className="w-full h-full object-cover group-hover:opacity-85 transition-opacity duration-300"
+              />
+            </div>
+          ))}
+        </div>
+        {GALLERY[4] && (
+          <div
+            className="mt-3 aspect-[16/5] overflow-hidden cursor-zoom-in group"
+            onClick={() => setLightboxIdx(4)}
+          >
+            <img
+              src={GALLERY[4]}
+              alt="Пірс — фото 5"
+              loading="lazy"
+              className="w-full h-full object-cover group-hover:opacity-85 transition-opacity duration-300"
+            />
+          </div>
+        )}
+      </section>
+
+      {/* ── LIGHTBOX ── */}
+      <AnimatePresence>
+        {lightboxIdx !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
+            onClick={closeLightbox}
+          >
+            <button onClick={closeLightbox} className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors">
+              <X size={28} />
+            </button>
+            <button onClick={(e) => { e.stopPropagation(); prev() }} className="absolute left-6 text-white/70 hover:text-white text-4xl leading-none transition-colors select-none">‹</button>
+            <motion.img
+              key={lightboxIdx}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2 }}
+              src={GALLERY[lightboxIdx]}
+              alt=""
+              className="max-h-[90vh] max-w-[90vw] object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button onClick={(e) => { e.stopPropagation(); next() }} className="absolute right-6 text-white/70 hover:text-white text-4xl leading-none transition-colors select-none">›</button>
+            <div className="absolute bottom-6 text-white/40 text-[13px] tracking-widest">{lightboxIdx + 1} / {GALLERY.length}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ── PRICE ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-[#FAFAFA]" id="price">
+      <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="price">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -233,7 +313,7 @@ export default function Pier() {
       </section>
 
       {/* ── CATCH & RELEASE ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-lake text-white relative overflow-hidden" id="catch">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-lake text-white relative overflow-hidden" id="catch">
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             <Reveal>
@@ -275,7 +355,7 @@ export default function Pier() {
       </section>
 
       {/* ── CONDITIONS ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore" id="conditions">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="conditions">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />
@@ -335,7 +415,7 @@ export default function Pier() {
       </section>
 
       {/* ── HANDLING RULES ── */}
-      <section className="py-[clamp(80px,10vw,130px)] bg-bakshala-shore" id="handling">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="handling">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
             <div className="w-px h-10 bg-bakshala-sand mx-auto mb-5" />

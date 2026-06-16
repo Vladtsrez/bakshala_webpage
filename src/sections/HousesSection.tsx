@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Users, Wifi, Bath, Coffee, Flame, Car, Waves } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { houses } from '../data/houses'
+import { openBooking } from '../lib/openBooking'
 import SectionBadge from '../components/ui/SectionBadge'
 import LearnMoreButton from '../components/ui/LearnMoreButton'
 
@@ -136,12 +137,12 @@ export default function HousesSection() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 flex-wrap">
-                  <Link
-                    to="/contacts"
+                  <button
+                    onClick={openBooking}
                     className="bg-bakshala-sand text-white px-7 py-3.5 text-[12px] tracking-widest uppercase rounded-full hover:bg-bakshala-sand/90 transition-colors"
                   >
                     Забронювати
-                  </Link>
+                  </button>
                   <LearnMoreButton to={`/houses/${house.id}`} />
                 </div>
               </div>

@@ -2,18 +2,18 @@ import { Fish, Bed, Waves, Leaf, Flame, UtensilsCrossed } from 'lucide-react'
 import SectionBadge from '../components/ui/SectionBadge'
 
 const SERVICES = [
-  { name: 'Рибалка', desc: 'Власне озеро, цілодобовий доступ', Icon: Fish },
+  { name: 'Рибалка', desc: 'Власна водойма, цілодобовий доступ', Icon: Fish },
   { name: 'Проживання', desc: '4 затишних будиночки', Icon: Bed },
-  { name: 'Озеро', desc: 'Чиста вода, пірси, човни', Icon: Waves },
-  { name: 'Природа', desc: '5 гектарів власної території', Icon: Leaf },
+  { name: 'Водойма', desc: 'Чиста вода, пірси, човни', Icon: Waves },
+  { name: 'Природа', desc: '60 гектарів власної території', Icon: Leaf },
   { name: 'Дозвілля', desc: 'Беседки, вогнище, активності', Icon: Flame },
   { name: 'Кухня', desc: 'Локальні страви, авторське меню', Icon: UtensilsCrossed },
 ]
 
 const STATS = [
   { num: '120+', label: 'Задоволених гостей' },
-  { num: '5 га', label: 'Власна територія' },
-  { num: '1', label: 'Власне озеро' },
+  { num: '60 га', label: 'Власна територія' },
+  { num: '1', label: 'Власна водойма' },
   { num: '4', label: 'Затишних будиночки' },
 ]
 
@@ -100,7 +100,7 @@ export default function AboutSection() {
           <div className="aspect-[2/3] overflow-hidden hidden lg:block">
             <img
               src={`${import.meta.env.BASE_URL}Озеро.JPG`}
-              alt="Ранчо Бакшала — пірс на озері"
+              alt="Ранчо Бакшала — пірс на водоймі"
               loading="lazy"
               className="w-full h-full object-cover"
             />
