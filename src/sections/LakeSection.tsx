@@ -2,8 +2,8 @@ import ScrollExpandMedia from '../components/ui/scroll-expansion-hero'
 import SectionBadge from '../components/ui/SectionBadge'
 
 const BASE = import.meta.env.BASE_URL
-const LAKE_BG = `${BASE}Озеро.JPG`
-const LAKE_MEDIA = `${BASE}Озеро.JPG`
+const LAKE_BG = `${BASE}Озеро.webp`
+const LAKE_MEDIA = `${BASE}Озеро.webp`
 
 const STATS = [
   { value: '10 га', label: 'площа водойми' },

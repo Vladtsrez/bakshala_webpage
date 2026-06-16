@@ -19,7 +19,7 @@ export default function FishingPreview() {
       {/* Left — full-bleed photo */}
       <div className="relative min-h-[480px] md:min-h-[640px] overflow-hidden">
         <img
-          src={`${import.meta.env.BASE_URL}fishing.jpg`}
+          src={`${import.meta.env.BASE_URL}fishing.webp`}
           alt="Рибалка на водоймі"
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover object-center"

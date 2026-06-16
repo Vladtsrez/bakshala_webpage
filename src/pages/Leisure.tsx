@@ -50,12 +50,12 @@ const GAZEBOS = [
       { Icon: Waves,        label: 'Риболовля включена' },
     ],
     images: [
-      `${BASE}Leisure-1_1.JPG`,
-      `${BASE}Leisure-1_2.JPG`,
-      `${BASE}Leisure-1_3.JPG`,
-      `${BASE}Leisure-1_4.JPG`,
-      `${BASE}Leisure-1_5.JPG`,
-      `${BASE}Leisure-1_6.JPG`,
+      `${BASE}Leisure-1_1.webp`,
+      `${BASE}Leisure-1_2.webp`,
+      `${BASE}Leisure-1_3.webp`,
+      `${BASE}Leisure-1_4.webp`,
+      `${BASE}Leisure-1_5.webp`,
+      `${BASE}Leisure-1_6.webp`,
     ],
   },
   {
@@ -73,12 +73,12 @@ const GAZEBOS = [
       { Icon: Flame,        label: 'Мангал + приладдя' },
     ],
     images: [
-      `${BASE}Leisure-2_1.JPG`,
-      `${BASE}Leisure-2_2.JPG`,
-      `${BASE}Leisure-2_3.JPG`,
-      `${BASE}Leisure-2_4.JPG`,
-      `${BASE}Leisure-2_5.JPG`,
-      `${BASE}Leisure-2_6.JPG`,
+      `${BASE}Leisure-2_1.webp`,
+      `${BASE}Leisure-2_2.webp`,
+      `${BASE}Leisure-2_3.webp`,
+      `${BASE}Leisure-2_4.webp`,
+      `${BASE}Leisure-2_5.webp`,
+      `${BASE}Leisure-2_6.webp`,
     ],
   },
 ]
@@ -188,7 +188,7 @@ export default function Leisure() {
       >
         <div className="absolute inset-0">
           <img
-            src={`${BASE}Leisure-hero.JPG`}
+            src={`${BASE}Leisure-hero.webp`}
             alt="Альтанки"
             className="w-full h-full object-cover"
           />

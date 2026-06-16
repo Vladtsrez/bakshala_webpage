@@ -134,7 +134,7 @@ export default function Fishing() {
       >
         <div className="absolute inset-0">
           <img
-            src={`${import.meta.env.BASE_URL}pier-3.JPG`}
+            src={`${import.meta.env.BASE_URL}pier-3.webp`}
             alt="Риболовля"
             className="w-full h-full object-cover"
           />
@@ -466,7 +466,7 @@ export default function Fishing() {
             <Reveal>
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
-                  src={`${import.meta.env.BASE_URL}Rod.jpg`}
+                  src={`${import.meta.env.BASE_URL}Rod.webp`}
                   alt="Рибальське спорядження"
                   loading="lazy"
                   className="w-full h-full object-cover"

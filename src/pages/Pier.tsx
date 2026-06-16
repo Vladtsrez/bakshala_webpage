@@ -11,11 +11,11 @@ import PageTransition from '../components/shared/PageTransition'
 const BASE = import.meta.env.BASE_URL
 
 const GALLERY = [
-  `${BASE}pier-2.JPG`,
-  `${BASE}pier-3.JPG`,
-  `${BASE}pier-4.JPG`,
-  `${BASE}pier-5.JPG`,
-  `${BASE}pier-6.JPG`,
+  `${BASE}pier-2.webp`,
+  `${BASE}pier-3.webp`,
+  `${BASE}pier-4.webp`,
+  `${BASE}pier-5.webp`,
+  `${BASE}pier-6.webp`,
 ]
 
 function Reveal({
@@ -105,7 +105,7 @@ export default function Pier() {
       >
         <div className="absolute inset-0">
           <img
-            src={`${BASE}pier-hero.jpg`}
+            src={`${BASE}pier-hero.webp`}
             alt="Окремий пірс"
             className="w-full h-full object-cover"
           />

@@ -136,7 +136,7 @@ export default function Houses() {
 
       {/* ── HERO ── */}
       <PageHero
-        image={`${import.meta.env.BASE_URL}House-hero.JPG`}
+        image={`${import.meta.env.BASE_URL}House-hero.webp`}
         title="Будиночки та"
         titleEm="умови проживання"
         badge="Проживання"
