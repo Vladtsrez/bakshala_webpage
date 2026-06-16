@@ -50,8 +50,8 @@ export default function Header() {
             : 'bg-gradient-to-b from-black/50 to-transparent border-b border-transparent'
         }`}
       >
-        <div className="max-w-[1280px] mx-auto px-8 flex items-center justify-between transition-all duration-300"
-          style={{ padding: scrolled ? '14px 32px' : '22px 32px' }}>
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 flex items-center justify-between transition-all duration-300"
+          style={{ paddingTop: scrolled ? '14px' : '22px', paddingBottom: scrolled ? '14px' : '22px' }}>
           <Link
             to="/"
             className={`font-serif font-light text-[18px] tracking-[0.32em] uppercase ${scrolled ? 'text-bakshala-text' : 'text-white'}`}

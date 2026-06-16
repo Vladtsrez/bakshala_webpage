@@ -31,7 +31,7 @@ function ServiceCard({
   return (
     <div
       className={`border border-bakshala-text/10 p-[22px_24px] flex items-center gap-4 bg-white/60 hover:border-bakshala-lake transition-all duration-250 hover:-translate-y-0.5 w-full ${
-        reverse ? 'flex-row-reverse text-right' : ''
+        reverse ? 'lg:flex-row-reverse lg:text-right' : ''
       }`}
     >
       <div className="w-[42px] h-[42px] rounded-full flex items-center justify-center bg-bakshala-lake text-white flex-shrink-0">
@@ -47,7 +47,7 @@ function ServiceCard({
 
 export default function AboutSection() {
   return (
-    <section className="py-[130px] bg-white/40" id="about-section">
+    <section className="py-[clamp(48px,5vw,72px)] bg-white/40" id="about-section">
       <div className="max-w-[1280px] mx-auto px-8">
         {/* Head */}
         <div className="text-center max-w-[720px] mx-auto mb-[72px]">

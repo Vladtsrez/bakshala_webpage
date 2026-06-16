@@ -32,7 +32,7 @@ export default function HousesSection() {
   }
 
   return (
-    <section className="py-[130px] bg-bakshala-shore" id="houses">
+    <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="houses">
       <div className="max-w-[1280px] mx-auto px-8">
         {/* Head */}
         <div className="text-center max-w-[720px] mx-auto mb-14">

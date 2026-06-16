@@ -16,7 +16,7 @@ export default function LakeSection() {
   return (
     <>
       {/* Section head */}
-      <section className="py-[130px] pb-[60px] bg-bakshala-shore" id="lake">
+      <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-shore" id="lake">
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="text-center max-w-[720px] mx-auto">
             <div className="w-14 h-px bg-bakshala-sand mx-auto mb-5" />

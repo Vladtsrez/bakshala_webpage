@@ -36,7 +36,7 @@ export default function FishingPreview() {
             backgroundSize: '22px 22px',
           }}
         />
-        <div className="relative px-12 py-[clamp(40px,5vw,60px)] max-w-[600px]">
+        <div className="relative px-6 md:px-12 py-[clamp(40px,5vw,60px)] max-w-[600px]">
           <SectionBadge>Рибальський рай</SectionBadge>
           <h2
             className="font-serif font-light tracking-tight mt-3.5 mb-7"
