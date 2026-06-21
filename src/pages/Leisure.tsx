@@ -401,8 +401,8 @@ export default function Leisure() {
                 className="font-serif font-light italic leading-[1.35] tracking-tight text-bakshala-text"
                 style={{ fontSize: 'clamp(24px, 3.2vw, 36px)' }}
               >
-                Альтанка — це ваш окремий куточок{' '}
-                <span className="text-bakshala-lake not-italic">«Бакшали»</span>{' '}
+                Альтанка — відпочинку на Ранчо{' '}
+                <span className="text-bakshala-lake not-italic">БАКШАЛА</span>{' '}
                 на день: зустрічайте гостей, готуйте на мангалі та відпочивайте біля водойми.
               </p>
             </div>

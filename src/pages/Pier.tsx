@@ -130,7 +130,7 @@ export default function Pier() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[11px] tracking-[0.28em] uppercase text-bakshala-sand mb-4 mt-2"
+            className="text-[11px] tracking-[0.28em] uppercase text-white mb-4 mt-2"
           >
             Особистий простір на воді
           </motion.div>
@@ -142,7 +142,7 @@ export default function Pier() {
             className="font-serif font-light text-[clamp(44px,6vw,84px)] leading-tight tracking-tight"
           >
             Риболовля на<br />
-            <em className="italic text-bakshala-sand/90">окремому пірсі</em>
+            <em className="italic text-white/90">окремому пірсі</em>
           </motion.h1>
 
           <motion.p
