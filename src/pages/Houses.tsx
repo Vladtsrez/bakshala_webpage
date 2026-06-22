@@ -568,7 +568,7 @@ export default function Houses() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
             {SAFE.map(({ Icon, title, items }, i) => (
               <Reveal key={i} delay={i * 0.06}>
                 <div className="border border-white/[0.14] p-8 h-full">
