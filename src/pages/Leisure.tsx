@@ -85,7 +85,7 @@ const GAZEBOS = [
 
 const STEPS = [
   ['01', 'Оберіть та забронюйте', 'Альтанки бронюйте телефоном або в месенджері — Telegram чи Instagram. Без бронювання — за наявності вільних альтанок.'],
-  ['02', 'Внесіть передоплату', 'Бронювання підтверджується після передоплати 50% від вартості альтанки.'],
+  ['02', 'Внесіть передоплату', 'Бронювання підтверджується після передоплати'],
   ['03', 'Залишитесь довше?', 'Якщо після відпочинку плануєте риболовлю чи інші розваги — додатково оплачується денне перебування.'],
 ]
 
@@ -153,7 +153,6 @@ const SAFE = [
     items: [
       'Територія, входи та сходи обладнані камерами',
       'Запис зберігається для безпеки гостей і майна',
-      'У самих альтанках, душових і туалетах камер немає',
     ],
   },
   {
@@ -162,7 +161,6 @@ const SAFE = [
     items: [
       'Паркування — лише на спеціально відведених місцях',
       'Не залишайте авто на в\'їздах та виїздах',
-      'Комплекс не відповідає за збереження авто та речей у ньому',
     ],
   },
 ]
@@ -232,8 +230,8 @@ export default function Leisure() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="mt-5 text-white/80 text-[15px] leading-relaxed max-w-2xl mx-auto"
           >
-            Затишний простір біля води для відпочинку компанією — з мангалом, столом і тінню дерев.
-            Усе, що потрібно для теплого дня на природі.
+            Все для справжнього відпочинку на природі: <br />
+            вода поруч, мангал готовий, компанія в зборі.
           </motion.p>
 
           <motion.div
@@ -480,12 +478,12 @@ export default function Leisure() {
                     Instagram
                   </a>
                 </div>
-                <div className="flex items-start gap-2.5 text-[13.5px] text-white/80 leading-[1.55]">
+                {/* <div className="flex items-start gap-2.5 text-[13.5px] text-white/80 leading-[1.55]">
                   <span className="text-bakshala-sand flex-shrink-0 mt-0.5">
                     <AlertTriangle size={17} strokeWidth={1.5} />
                   </span>
                   Гучні вечірки та масштабні святкування — лише за попереднім погодженням з адміністрацією.
-                </div>
+                </div> */}
               </div>
             </Reveal>
           </div>
@@ -516,8 +514,8 @@ export default function Leisure() {
           </Reveal>
 
           <Reveal>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 max-w-[560px] mx-auto">
-              <div className="border border-white/[0.14] p-9">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 max-w-[820px] mx-auto">
+              <div className="border border-white/[0.14] p-12">
                 <div className="inline-flex items-center gap-2.5 text-[12px] tracking-[0.16em] uppercase text-bakshala-sand mb-6">
                   <TreePine size={16} strokeWidth={1.5} />
                   Альтанки
@@ -531,7 +529,7 @@ export default function Leisure() {
                   <span className="font-serif font-light text-[38px] leading-none text-white">22:00</span>
                 </div>
               </div>
-              <div className="border border-white/[0.14] p-9">
+              <div className="border border-white/[0.14] p-12">
                 <div className="inline-flex items-center gap-2.5 text-[12px] tracking-[0.16em] uppercase text-bakshala-sand mb-6">
                   <Clock size={16} strokeWidth={1.5} />
                   Важливо

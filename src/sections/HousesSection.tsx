@@ -10,7 +10,7 @@ const ICONS: Record<string, React.FC<{ size?: number; className?: string }>> = {
   WiFi: Wifi,
   Душ: Bath,
   Ванна: Bath,
-  Кухня: Coffee,
+  'Кухонна зона': Coffee,
   Мангал: Flame,
   Паркінг: Car,
   Тераса: Waves,

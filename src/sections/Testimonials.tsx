@@ -58,7 +58,7 @@ export default function Testimonials() {
             Що кажуть <em className="text-bakshala-sand">наші гості</em>
           </h2>
           <p className="mt-5 text-white/60 leading-[1.7] text-[15px]">
-            Реальні враження людей, які вже відпочили на Бакшалі.
+            Реальні враження людей, які вже відпочили на Ранчо Бакшала
           </p>
         </div>
 

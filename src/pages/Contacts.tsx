@@ -137,7 +137,7 @@ export default function Contacts() {
                   <select name="house" value={form.house} onChange={handleChange} className={inputCls}>
                     <option value="">Будь-який будиночок</option>
                     <option value="house-1">Будиночок на 6 осіб — ₴9 000</option>
-                    <option value="house-2">Будиночок на 8 осіб (двоповерховий) — ₴11 000</option>
+                    <option value="house-2">Будиночок на 8-9 осіб (двоповерховий) — ₴11 000</option>
                     <option value="leisure-small">Альтанка до 8 осіб — ₴8 000</option>
                     <option value="leisure-big">Альтанка до 15 осіб — ₴10 000</option>
                   </select>

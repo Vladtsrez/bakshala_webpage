@@ -8,7 +8,7 @@ import PageTransition from '../components/shared/PageTransition'
 import SectionBadge from '../components/ui/SectionBadge'
 
 const ICONS: Record<string, React.FC<{ size?: number; className?: string }>> = {
-  WiFi: Wifi, Душ: Bath, Ванна: Bath, Кухня: Coffee, Мангал: Flame,
+  WiFi: Wifi, Душ: Bath, Ванна: Bath, 'Кухонна зона': Coffee, Мангал: Flame,
   Паркінг: Car, Тераса: Waves, 'Дитяче місце': Users, Джакузі: Bath,
   Камін: Flame, Причал: Waves, Телевізор: Tv, Кондиціонер: Wind,
 }

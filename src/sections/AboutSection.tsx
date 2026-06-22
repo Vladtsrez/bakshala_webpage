@@ -7,7 +7,7 @@ const SERVICES = [
   { name: 'Водойма', desc: 'Сап-дошки, каяки, власний пляж', Icon: Waves },
   { name: 'Природа', desc: '60 гектарів власної території', Icon: Leaf },
   { name: 'Дозвілля', desc: 'Беседки, вогнище, активності', Icon: Flame },
-  { name: 'Кухня', desc: 'Замовлення їжі · готовність 1–1,5 год', Icon: UtensilsCrossed },
+  { name: 'Кухонна зона', desc: 'Замовлення їжі · готовність 1–1,5 год', Icon: UtensilsCrossed },
 ]
 
 const STATS = [

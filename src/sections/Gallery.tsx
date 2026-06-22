@@ -17,10 +17,10 @@ export default function Gallery() {
             className="font-serif font-light tracking-tight mt-4"
             style={{ fontSize: 'clamp(34px, 4.8vw, 62px)', lineHeight: 1.05 }}
           >
-            Атмосфера <em className="text-bakshala-sand">Бакшали</em>
+            Атмосфера <em className="text-bakshala-sand">ранчо Бакшала</em>
           </h2>
           <p className="mt-5 text-bakshala-text/60 leading-[1.7] text-[15px]">
-            Природа, відпочинок і незабутні моменти.
+            Природа, відпочинок і незабутні моменти
           </p>
         </div>
 

@@ -157,7 +157,7 @@ export default function Fishing() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[11px] tracking-[0.28em] uppercase text-bakshala-sand mb-4 mt-2"
+            className="text-[11px] tracking-[0.28em] uppercase text-white mb-4 mt-2"
           >
             Зловив — відпусти
           </motion.div>
@@ -307,7 +307,7 @@ export default function Fishing() {
               Вартість та оренда пірсу
             </div>
             <h2 className="font-serif font-light text-[clamp(34px,4vw,56px)] leading-[1.05] tracking-tight mb-5">
-              Один пірс — <em className="italic text-bakshala-sand">цілий день</em>
+              Один пірс — <em className="italic text-bakshala-sand">світловий день</em>
             </h2>
             <p className="text-[15px] leading-relaxed max-w-xl mx-auto text-bakshala-text/55">
               За умови бронювання альтанки або будинку риболовля входить у вартість відпочинку.

@@ -35,7 +35,7 @@ export default function HeroSection() {
         >
           Відпочинок 
           <br />
-          <em className="text-bakshala-mist not-italic">біля водойми</em>
+          <em className="text-white not-italic">біля водойми</em>
           <br />
         </motion.h1>
 

@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1.2fr] gap-10 md:gap-16 py-14 md:py-[88px]">
           {/* Brand */}
           <div>
-            <div className="font-serif font-light text-[18px] tracking-[0.32em] uppercase text-white">
+            <div className="font-serif font-medium text-[18px] tracking-[0.32em] uppercase text-white">
               Ранчо <span className="text-bakshala-sand">Бакшала</span>
             </div>
             <p className="mt-5 font-serif text-[22px] font-light leading-[1.35] text-white max-w-xs">
@@ -36,8 +36,8 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 mt-7 text-white ">
               {([
-                { el: <IcoInstagram />, label: 'Instagram', href: '#' },
-                { el: <IcoFacebook />, label: 'Facebook', href: '#' },
+                { el: <IcoInstagram />, label: 'Instagram', href: 'https://www.instagram.com/bakshala_rancho/' },
+                { el: <IcoFacebook />, label: 'Facebook', href: 'https://www.facebook.com/people/Rancho-Bakshala/61581525818906/' },
                 { el: <Send size={18} />, label: 'Telegram', href: 'https://t.me/bakshalaranch_bot' },
               ] as { el: React.ReactNode; label: string; href: string }[]).map(({ el, label, href }) => (
                 <a
@@ -56,7 +56,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h5 className="font-serif font-normal text-xl text-white mb-5">Навігація</h5>
+            <h5 className="font-serif font-semibold text-xl text-white mb-5">Навігація</h5>
             <ul className="flex flex-col gap-3">
               {NAV.map((link) => (
                 <li key={link.label}>
@@ -82,7 +82,7 @@ export default function Footer() {
 
           {/* Contacts */}
           <div>
-            <h5 className="font-serif font-normal text-xl text-white mb-5">Контакти</h5>
+            <h5 className="font-serif font-semibold text-xl text-white mb-5">Контакти</h5>
             <ul className="flex flex-col gap-4 text-white">
               <li className="flex gap-3.5 text-[14px] text-white/72 leading-relaxed">
                 <Phone size={16} className="text-bakshala-sand flex-shrink-0 mt-0.5" />

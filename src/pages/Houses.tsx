@@ -34,14 +34,14 @@ function Reveal({
 
 const STEPS = [
   ['01', 'Оберіть та забронюйте', 'Будиночки, альтанки й риболовлю бронюйте телефоном або в месенджері — Telegram чи Instagram.'],
-  ['02', 'Внесіть передоплату', 'Бронювання підтверджується після передоплати 50% від вартості будинку або альтанки.'],
-  ['03', 'Оформлення при заїзді', 'За паспортом чи документом, що посвідчує особу. За потреби — анкета при оренді спорядження.'],
+  ['02', 'Внесіть передоплату', 'Бронювання підтверджується після передоплати'],
+  ['03', 'Оформлення при заїзді', 'За документом, що посвідчує особу. За потреби — анкета при оренді спорядження.'],
 ]
 
 const PERKS = [
   { Icon: Zap,     title: 'Світло завжди',        desc: 'Під час відключень працюють генератори та інверторні акумулятори — світло є навіть під час тривалих відключень.', tag: null },
   { Icon: PawPrint, title: 'Можна з улюбленцем', desc: 'Розміщення з тваринами — за погодженням і наявності вільного будиночка. Потрібні паспорт тварини та довідка про щеплення.', tag: null },
-  { Icon: Clock,   title: 'Ранній / пізній заїзд', desc: 'Можливий, якщо до або після вас немає інших гостей — цей час потрібен на прибирання.', tag: null },
+  { Icon: Clock,   title: 'Ранній / пізній заїзд', desc: 'Можливий, якщо до або після вас немає інших бронювань.', tag: null },
 ]
 
 const RULE_CARDS = [
@@ -59,9 +59,7 @@ const RULE_CARDS = [
     Icon: Key,
     title: 'Перед виїздом',
     items: [
-      'Зачиніть двері та перекрийте водопровідні крани',
-      'Вимкніть світло й електроприлади',
-      'Меблі не переміщуйте й не виносьте без дозволу',
+      'Меблі які були переміщені - повернути на місця',
       'Повідомте рецепцію за 30 хв до розрахункового часу',
     ],
   },
@@ -86,12 +84,13 @@ const DENIED = [
   'Електронагрівальні прилади поза комплектацією будинку',
   'Кидати сторонні предмети в унітаз',
   'Ходити по газонах, рвати квіти, кущі та плоди дерев',
+  'Вивіз риби без дозволу',
 ]
 
 const FINES = [
   { Icon: Flame,    name: 'Куріння у будиночках та альтанках',       amt: '2 500 ₴', note: 'за випадок' },
   { Icon: Volume2,  name: 'Порушення тиші (23:00–08:00)',             amt: '1 000 ₴', note: 'за випадок' },
-  { Icon: Users,    name: 'Незареєстрований гість у будинку',         amt: '50%',     note: 'вартості будинку' },
+  { Icon: Users,    name: 'Незареєстрований гість у будинку',         amt: '100%',     note: 'вартості будинку' },
   { Icon: PawPrint, name: 'Непогоджена тварина в будинку',            amt: '2 500 ₴', note: null },
   { Icon: Star,     name: 'Салют, феєрверки, конфеті на території',  amt: '5 000 ₴', note: null },
   { Icon: Key,      name: 'Втрата ключа від будинку',                 amt: '500 ₴',   note: null },
@@ -109,19 +108,10 @@ const SAFE = [
     ],
   },
   {
-    Icon: Siren,
-    title: 'Повітряна тривога',
-    items: [
-      'На території є укриття — розташування підкажуть при заселенні',
-      'При сигналі зачиніть вікна, візьміть документи та цінні речі',
-      'Виходьте евакуаційними шляхами (схема у будинку)',
-    ],
-  },
-  {
     Icon: Cctv,
     title: 'Безпека та паркування',
     items: [
-      'Територія під відеоспостереженням (окрім будинків і санвузлів)',
+      'Територія під відеоспостереженням',
       'Паркування — лише на відведених місцях',
       'Купання — у спеціально відведеному місці, діти до 14 — під наглядом',
     ],
@@ -209,10 +199,10 @@ export default function Houses() {
                 className="font-serif font-light italic leading-[1.35] tracking-tight text-bakshala-text"
                 style={{ fontSize: 'clamp(24px, 3.2vw, 36px)' }}
               >
-                «Вітаємо у Ранчо{' '}
-                <span className="text-bakshala-lake not-italic">«Бакшала»</span>!
+                Вітаємо у Ранчо{' '}
+                <span className="text-bakshala-lake not-italic">Бакшала</span>!
                 Просимо дотримуватись простих правил,
-                щоб ваш відпочинок був комфортним і безпечним.»
+                щоб ваш відпочинок був комфортним і безпечним.
               </p>
             </div>
           </Reveal>
@@ -349,11 +339,11 @@ export default function Houses() {
                 </div>
                 <div className="flex items-baseline justify-between py-3.5 border-t border-white/10">
                   <span className="text-[14px] text-white/65 tracking-[0.03em]">Заїзд з</span>
-                  <span className="font-serif font-light text-[38px] leading-none text-white">12:00</span>
+                  <span className="font-serif font-light text-[38px] leading-none text-white">10:00</span>
                 </div>
                 <div className="flex items-baseline justify-between py-3.5 border-t border-white/10">
                   <span className="text-[14px] text-white/65 tracking-[0.03em]">Виїзд до</span>
-                  <span className="font-serif font-light text-[38px] leading-none text-white">23:00</span>
+                  <span className="font-serif font-light text-[38px] leading-none text-white">22:00</span>
                 </div>
               </div>
             </div>
@@ -568,7 +558,7 @@ export default function Houses() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white max-w-[860px] mx-auto w-full">
             {SAFE.map(({ Icon, title, items }, i) => (
               <Reveal key={i} delay={i * 0.06}>
                 <div className="border border-white/[0.14] p-8 h-full">
