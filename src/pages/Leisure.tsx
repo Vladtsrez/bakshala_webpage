@@ -1,6 +1,6 @@
 import {
   Clock, Leaf, Utensils, Flame, Volume2, Star, Shield, Ban, X,
-  Waves, Cctv, Car, TreePine, Phone, Send, MessageCircle, AlertTriangle,
+  Waves, Cctv, Car, TreePine, Phone, Send, MessageCircle,
   ChevronDown, Wifi, Wind, Refrigerator, Tv, Sofa, Armchair,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
