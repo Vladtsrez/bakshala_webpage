@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import {
   Users, Phone, Send, MessageCircle, AlertTriangle, X, Ban,
   Zap, PawPrint, Clock, Shield, Key, Flame, Volume2,
-  Siren, Cctv, TreePine, BedDouble, Star,
+  Cctv, TreePine, BedDouble, Star,
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { houses } from '../data/houses'
