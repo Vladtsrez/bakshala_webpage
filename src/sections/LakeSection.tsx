@@ -2,8 +2,8 @@ import ScrollExpandMedia from '../components/ui/scroll-expansion-hero'
 import SectionBadge from '../components/ui/SectionBadge'
 
 const BASE = import.meta.env.BASE_URL
-const LAKE_BG = `${BASE}Озеро.webp`
-const LAKE_MEDIA = `${BASE}Озеро.webp`
+const LAKE_BG = `${BASE}lake.jpg`
+const LAKE_MEDIA = `${BASE}lake.jpg`
 
 const STATS = [
   { value: '10 га', label: 'площа водойми' },
@@ -43,7 +43,6 @@ export default function LakeSection() {
         title="Водойма Бакшала"
         date="10 га"
         scrollToExpand="Прокрутіть для перегляду"
-        textBlend
       >
         <div className="max-w-3xl mx-auto text-center">
           <SectionBadge>Наша природа</SectionBadge>

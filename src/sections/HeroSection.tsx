@@ -15,7 +15,7 @@ export default function HeroSection() {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src={`${import.meta.env.BASE_URL}Hero.webp`}
+          src={`${import.meta.env.BASE_URL}Hero.jpg`}
           alt="Ранчо Бакшала — вид на водойму"
           className="w-full h-full object-cover"
         />

@@ -99,7 +99,7 @@ export default function AboutSection() {
 
           <div className="aspect-[2/3] overflow-hidden hidden lg:block">
             <img
-              src={`${import.meta.env.BASE_URL}Озеро.webp`}
+              src={`${import.meta.env.BASE_URL}about-center.jpg`}
               alt="Ранчо Бакшала — пірс на водоймі"
               loading="lazy"
               className="w-full h-full object-cover"

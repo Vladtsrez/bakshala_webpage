@@ -43,7 +43,7 @@ export default function Contacts() {
   return (
     <PageTransition>
       <PageHero
-        image={`${import.meta.env.BASE_URL}Озеро.webp`}
+        image={`${import.meta.env.BASE_URL}house-3_7.jpg`}
         title="Звʼяжіться з"
         titleEm="нами"
         badge="Контакти"
