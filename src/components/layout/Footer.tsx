@@ -104,6 +104,7 @@ export default function Footer() {
                   <br />
                   <span className="text-white/50">Прибузька громада</span>
                 </a>
+                
               </li>
             </ul>
           </div>
