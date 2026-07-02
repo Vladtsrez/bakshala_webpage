@@ -56,6 +56,9 @@ const GAZEBOS = [
       `${BASE}Leisure-1_4.webp`,
       `${BASE}Leisure-1_5.webp`,
       `${BASE}Leisure-1_6.webp`,
+      `${BASE}leisure-1_7.JPG`,
+      `${BASE}leisure-1_8.jpg`,
+      `${BASE}leisure-pier.jpg`,
     ],
   },
   {
