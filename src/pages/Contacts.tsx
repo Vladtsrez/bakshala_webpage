@@ -7,7 +7,8 @@ import SectionBadge from '../components/ui/SectionBadge'
 interface FormState {
   name: string
   phone: string
-  date: string
+  dateIn: string
+  dateOut: string
   guests: string
   house: string
   message: string
@@ -15,7 +16,7 @@ interface FormState {
 
 export default function Contacts() {
   const [form, setForm] = useState<FormState>({
-    name: '', phone: '', date: '', guests: '2', house: '', message: '',
+    name: '', phone: '', dateIn: '', dateOut: '', guests: '2', house: '', message: '',
   })
   const [sent, setSent] = useState(false)
 
@@ -28,12 +29,13 @@ export default function Contacts() {
     const body = `
 Ім'я: ${form.name}
 Телефон: ${form.phone}
-Дата заїзду: ${form.date}
+Дата заїзду: ${form.dateIn}
+Дата виїзду: ${form.dateOut}
 Кількість гостей: ${form.guests}
 Будиночок: ${form.house || 'Не вказано'}
 Повідомлення: ${form.message}
     `.trim()
-    window.location.href = `https://t.me/bakshalaranch_bot?text=${encodeURIComponent(body)}`
+    window.location.href = `https://t.me/rancho_bakshala?text=${encodeURIComponent(body)}`
     setSent(true)
   }
 
@@ -122,18 +124,31 @@ export default function Contacts() {
                     />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input
-                      name="date" type="date" required
-                      value={form.date} onChange={handleChange} className={inputCls}
-                    />
-                    <select name="guests" value={form.guests} onChange={handleChange} className={inputCls}>
-                      {['1', '2', '3', '4', '5', '6', '7', '8+'].map((n) => (
-                        <option key={n} value={n}>
-                          {n} {n === '1' ? 'гість' : 'гостей'}
-                        </option>
-                      ))}
-                    </select>
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-widest text-bakshala-text/40 mb-1.5">Дата заїзду *</label>
+                      <input
+                        name="dateIn" type="date" required
+                        value={form.dateIn} onChange={handleChange} className={inputCls}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-widest text-bakshala-text/40 mb-1.5">Дата виїзду *</label>
+                      <input
+                        name="dateOut" type="date" required
+                        value={form.dateOut} onChange={handleChange} className={inputCls}
+                      />
+                    </div>
                   </div>
+                  <p className="text-[12px] italic text-bakshala-text/50 -mt-1">
+                    Доступні для бронювання дати уточнюйте у адміністратора
+                  </p>
+                  <select name="guests" value={form.guests} onChange={handleChange} className={inputCls}>
+                    {['1', '2', '3', '4', '5', '6', '7', '8+'].map((n) => (
+                      <option key={n} value={n}>
+                        {n} {n === '1' ? 'гість' : 'гостей'}
+                      </option>
+                    ))}
+                  </select>
                   <select name="house" value={form.house} onChange={handleChange} className={inputCls}>
                     <option value="">Будь-який будиночок</option>
                     <option value="house-1">Будиночок на 6 осіб — ₴9 000</option>
@@ -153,7 +168,7 @@ export default function Contacts() {
                     Надіслати запит
                   </button>
                   <p className="text-[12px] text-bakshala-text/40 text-center">
-                    Натиснення відкриє Telegram-бот — надішліть повідомлення там
+                    Натиснення відкриє чат з адміністратором у Telegram
                   </p>
                 </form>
               )}
