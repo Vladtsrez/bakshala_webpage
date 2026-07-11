@@ -324,7 +324,7 @@ export default function Houses() {
                 </div>
                 <div className="flex items-baseline justify-between py-3.5 border-t border-white/10">
                   <span className="text-[14px] text-white/65 tracking-[0.03em]">Заїзд з</span>
-                  <span className="font-serif font-light text-[38px] leading-none text-white">15:00</span>
+                  <span className="font-serif font-light text-[38px] leading-none text-white">14:00</span>
                 </div>
                 <div className="flex items-baseline justify-between py-3.5 border-t border-white/10">
                   <span className="text-[14px] text-white/65 tracking-[0.03em]">Виїзд до</span>
