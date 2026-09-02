@@ -1,6 +1,6 @@
 import {
-  Waves, Ruler, Anchor, Droplet, Shield, Fish, Target, Check, Scale,
-  BedDouble, Star, Camera, AlertTriangle, ShoppingBag, ChevronDown,
+  Waves, Ruler, Anchor, Droplet, Shield, Fish, Target, Check, /* Scale, */ // Scale unused while pier paused
+  /* BedDouble, */ Star, Camera, AlertTriangle, ShoppingBag, ChevronDown,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -52,13 +52,13 @@ const PEACEFUL = [
   { name: 'осетр-альбінос', rare: true },
 ]
 
-const INCLUDED = [
-  { label: 'Короповий мат', Icon: Check },
-  { label: 'Антисептик', Icon: Droplet },
-  { label: 'Мішок для зберігання риби', Icon: Check },
-  { label: 'Відерце для рибалки', Icon: Check },
-  { label: 'Ваги — за потреби', Icon: Scale },
-]
+// const INCLUDED = [ // hidden — pier rental paused
+//   { label: 'Короповий мат', Icon: Check },
+//   { label: 'Антисептик', Icon: Droplet },
+//   { label: 'Мішок для зберігання риби', Icon: Check },
+//   { label: 'Відерце для рибалки', Icon: Check },
+//   { label: 'Ваги — за потреби', Icon: Scale },
+// ]
 
 const RULE_CARDS = [
   {
@@ -188,12 +188,14 @@ export default function Fishing() {
             transition={{ duration: 0.7, delay: 0.35 }}
             className="flex gap-3.5 justify-center flex-wrap mt-8"
           >
+            {/* hidden — pier rental paused
             <a
               href="#price"
               className="bg-bakshala-sand text-white border border-bakshala-sand px-7 py-3.5 text-[13px] tracking-wider rounded-full hover:bg-bakshala-sand/90 transition-colors"
             >
               Вартість та умови
             </a>
+            */}
             <a
               href="#species"
               className="bg-transparent text-white border border-white/60 px-7 py-3.5 text-[13px] tracking-wider rounded-full hover:border-white hover:bg-white/10 transition-colors"
@@ -298,7 +300,7 @@ export default function Fishing() {
         </div>
       </section>
 
-      {/* ── PRICE ── */}
+      {/* ── PRICE — hidden, pier rental paused ──
       <section className="py-[clamp(48px,5vw,72px)] bg-[#FAFAFA]" id="price">
         <div className="max-w-[1280px] mx-auto px-8">
           <Reveal className="text-center mb-14">
@@ -315,7 +317,6 @@ export default function Fishing() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-stretch">
-            {/* Price card */}
             <Reveal>
               <div className="bg-bakshala-deep text-white p-12 relative overflow-hidden h-full flex flex-col justify-center">
                 <div className="absolute right-[-40px] bottom-[-40px] w-[180px] h-[180px] rounded-full border border-white/10 pointer-events-none" />
@@ -335,7 +336,6 @@ export default function Fishing() {
               </div>
             </Reveal>
 
-            {/* Included items */}
             <Reveal delay={0.08}>
               <div className="flex flex-col justify-center h-full">
                 <h3 className="font-serif font-normal text-[26px] mb-2">При оренді пірсу безкоштовно</h3>
@@ -360,6 +360,7 @@ export default function Fishing() {
           </div>
         </div>
       </section>
+      ── end PRICE ── */}
 
       {/* ── CATCH & RELEASE ── */}
       <section className="py-[clamp(48px,5vw,72px)] bg-bakshala-lake text-white relative overflow-hidden">
