@@ -11,7 +11,7 @@ import Houses from './pages/Houses'
 import HouseDetail from './pages/HouseDetail'
 import Fishing from './pages/Fishing'
 import Leisure from './pages/Leisure'
-import Pier from './pages/Pier'
+// import Pier from './pages/Pier' // hidden — restore by uncommenting
 import Contacts from './pages/Contacts'
 
 export default function App() {
@@ -36,7 +36,7 @@ export default function App() {
             <Route path="/houses/:id" element={<HouseDetail />} />
             <Route path="/fishing" element={<Fishing />} />
             <Route path="/leisure" element={<Leisure />} />
-            <Route path="/pier" element={<Pier />} />
+            {/* <Route path="/pier" element={<Pier />} /> */}{/* hidden — restore by uncommenting */}
             <Route path="/contacts" element={<Contacts />} />
           </Routes>
         </AnimatePresence>

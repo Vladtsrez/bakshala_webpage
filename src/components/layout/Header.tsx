@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: 'Будиночки', to: '/houses' },
   { label: 'Рибалка', to: '/fishing' },
   { label: 'Альтанки', to: '/leisure' },
-  { label: 'Окремий пірс', to: '/pier' },
+  // { label: 'Окремий пірс', to: '/pier' }, // hidden — restore by uncommenting
   { label: 'Контакти', to: '/contacts' },
 ]
 
