@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { X, Phone } from 'lucide-react'
+import { X, Phone, ExternalLink } from 'lucide-react'
 
 interface Props {
   isOpen: boolean
@@ -44,6 +44,13 @@ const CONTACTS = [
     href: TELEGRAM_LINK,
     bg: 'bg-[#29A8E9]',
     Icon: IcoTelegram,
+  },
+  {
+    label: 'Забронювати самостійно',
+    value: 'bookmenow.pro',
+    href: 'https://go.bookmenow.pro/t/rancho-bakshala?adults=2',
+    bg: 'bg-bakshala-lake',
+    Icon: () => <ExternalLink size={26} />,
   },
 ]
 
