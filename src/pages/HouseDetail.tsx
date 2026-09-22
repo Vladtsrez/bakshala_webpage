@@ -176,6 +176,14 @@ export default function HouseDetail() {
                 >
                   Запитати
                 </button>
+                <a
+                  href="https://go.bookmenow.pro/t/rancho-bakshala?adults=2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center bg-bakshala-lake text-white py-4 text-[11px] sm:text-[12px] tracking-widest uppercase mt-3 hover:bg-bakshala-lake/90 transition-colors"
+                >
+                  Забронювати самостійно
+                </a>
 
                 <div className="mt-8 pt-8 border-t border-bakshala-text/10">
                   <div className="text-[12px] text-bakshala-text/50 mb-3 tracking-widest uppercase">Інші варіанти</div>

@@ -183,6 +183,15 @@ export default function Houses() {
                       Детальніше →
                     </span>
                   </div>
+                  <a
+                    href="https://go.bookmenow.pro/t/rancho-bakshala?adults=2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="block w-full text-center bg-bakshala-lake text-white py-3 sm:py-3.5 text-[11px] sm:text-[12px] tracking-widest uppercase mt-5 hover:bg-bakshala-lake/90 transition-colors"
+                  >
+                    Забронювати самостійно
+                  </a>
                 </div>
               </Link>
             ))}

@@ -309,6 +309,14 @@ export default function Leisure() {
                     >
                       Орендувати
                     </button>
+                    <a
+                      href="https://go.bookmenow.pro/t/rancho-bakshala?adults=2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-bakshala-lake text-white px-5 sm:px-6 py-3 text-[11px] sm:text-[12px] tracking-widest uppercase hover:bg-bakshala-lake/90 transition-colors whitespace-nowrap text-center"
+                    >
+                      Забронювати самостійно
+                    </a>
                   </div>
                 </div>
                 <p className="text-bakshala-text/60 text-[14.5px] leading-relaxed max-w-2xl">{g.desc}</p>
